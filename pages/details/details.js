@@ -96,7 +96,7 @@ Page({
     console.log(imgUrl)
     wx.previewImage({
       current: imgUrl,
-      urls: [imgUrl]
+	  urls: this.data.product_info.imgUrl1
     })
   },
 
