@@ -15,7 +15,7 @@
 /*信息框*/
 .frame{
   width:100%;
-  margin-top:118px;
+  margin-top:138px;
   z-index:1;
   margin-bottom:50px;
 }
