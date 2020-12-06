@@ -75,7 +75,7 @@ Page({
     // this.onshow()
     var that = this
     var data = { openid: app.globalData.openid }
-    request.request('https://www.xianwuzu.cn:443/wx_Code/mycollect', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/mycollect', 'GET', data).then(function (res) {
       var collect = []
 
       for (var i = res.length - 1; i >= 0; i--) {
@@ -205,7 +205,7 @@ Page({
             star: 0,
             openid: app.globalData.openid
           };
-          request.request('https://www.xianwuzu.cn:443/wx_Code/collect', 'GET', data).then(function(){
+          request.request('https://www.yunluheis.cn:443/wx_Code/collect', 'GET', data).then(function(){
 
             var p = app.globalData.star_ids.indexOf(collect[id].id)
             app.globalData.star_ids.splice(p,1)

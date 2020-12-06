@@ -28,7 +28,7 @@ Page({
   publish: function (openid) {
     var that = this
     var data = { openid: openid }
-    request.request('https://www.xianwuzu.cn:443/wx_Code/mypublish', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/mypublish', 'GET', data).then(function (res) {
       console.log(res)
       var other_publish_info = res
       for (var i = 0; i < other_publish_info.length; i++) {

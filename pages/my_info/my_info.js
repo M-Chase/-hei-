@@ -74,7 +74,7 @@ Page({
   show_news:function(){
     var data = { openid: app.globalData.openid }
     var that = this
-    request.request('https://www.xianwuzu.cn:443/chat/getNews', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/chat/getNews', 'GET', data).then(function (res) {
       console.log(res)
       var myinfos = that.timestamp_date(res)
       console.log('jjjjjjjjjjjjjjjjjjjjj')
@@ -104,7 +104,7 @@ Page({
           var receiver_id = other_info.openid
           var data = { sender_id: sender_id, receiver_id: receiver_id }
  
-            request.request('https://www.xianwuzu.cn:443/chat/update_id1', 'GET', data).then(function (res) {
+            request.request('https://www.yunluheis.cn:443/chat/update_id1', 'GET', data).then(function (res) {
               that.show_news()
             })
 
@@ -117,7 +117,7 @@ Page({
   {
     var that = this
     var data = {openid:app.globalData.openid}
-    request.request('https://www.xianwuzu.cn:443/wx_Code/user_notice', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/user_notice', 'GET', data).then(function (res) {
 
       var notices = res
       notices['system'] = that.timestamp_date_notice(notices['system'])
@@ -132,7 +132,7 @@ Page({
   system_notice:function()
   {
     var data = { openid: app.globalData.openid }
-    request.request('https://www.xianwuzu.cn:443/wx_Code/isnew', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/isnew', 'GET', data).then(function (res) {
       wx.navigateTo({url:'./system_notice/system_notice'})
     })
   },
@@ -140,7 +140,7 @@ Page({
   reply_notice:function()
   {
     var data = { openid: app.globalData.openid }
-    request.request('https://www.xianwuzu.cn:443/wx_Code/isnew2', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/isnew2', 'GET', data).then(function (res) {
       wx.navigateTo({ url: './reply_notice/reply_notice' })
     })
   },

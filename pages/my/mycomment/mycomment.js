@@ -73,7 +73,7 @@ Page({
     // this.onshow()
     var that = this
     var data = {openid:app.globalData.openid}
-    request.request('https://www.xianwuzu.cn:443/wx_Code/mycomment', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/mycomment', 'GET', data).then(function (res) {
       var mycomment = []
 
       for (var i = res.length - 1; i >= 0; i--) {
@@ -109,7 +109,7 @@ onshow:function(){
       console.log("ddddddddddddd")
       var publish_info = res.data
       //请求评论过的帖子id
-      request.request('https://www.xianwuzu.cn:443/wx_Code/mycomment', 'GET', data).then(function (res) {
+      request.request('https://www.yunluheis.cn:443/wx_Code/mycomment', 'GET', data).then(function (res) {
         var timestamp = parseInt(Date.parse(new Date()) / 1000);
         for (var i = res.length - 1; i >= 0; i--) {
           var pos = id_pos[res[i]]

@@ -73,7 +73,7 @@ Page({
           console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
           console.log(id)
           console.log(notices)
-          request.request('https://www.xianwuzu.cn:443/wx_Code/update_delete', 'GET', data).then(function (res) {
+          request.request('https://www.yunluheis.cn:443/wx_Code/update_delete', 'GET', data).then(function (res) {
             notices['user'].splice(id,1)
             that.setData({notices:notices})
             app.globalData.notices = notices

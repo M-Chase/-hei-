@@ -12,8 +12,8 @@ Page({
     scrollHeight: 0,
     lastID: '',
     other_info: { 'openid': 'osIqX5L0GcVzGmV8_HqQI6UbB9bo', 'nickname': '阿八' },//进来即获取的信息
-    websocketUrl: 'wss://www.xianwuzu.cn:443/chat/',
-    baseUrl: 'https://www.xianwuzu.cn:443/chat/',
+    websocketUrl: 'wss://www.yunluheis.cn:443/chat/',
+    baseUrl: 'https://www.yunluheis.cn:443/chat/',
     sender_ids: [],
     my_info: {},
     isme: false,
@@ -67,6 +67,7 @@ Page({
           message_time_isme['view'] = true
         else
           message_time_isme['view'] = false
+          console.log("openid:  "+openid) 
         if(res[i].sender_id==openid)
           message_time_isme['isme'] = true
         else
@@ -145,7 +146,7 @@ Page({
   clear_unread: function (sender_id, receiver_id)
   {
     var data = { sender_id: sender_id, receiver_id: receiver_id}
-    request.request('https://www.xianwuzu.cn:443/chat/clear_unread', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/chat/clear_unread', 'GET', data).then(function (res) {
 
       // wx.getStorage({
       //   key: "userInfo",
@@ -331,6 +332,17 @@ Page({
 
   uploadimage: function () {
 
-  }
+  },
 
+//页面自动滚动到底部
+pageScrollToBottom: function () {
+  wx.createSelectorQuery().select('#scrollpage').boundingClientRect(function(rect){
+      // console.log(rect.height);
+      wx.pageScrollTo({
+          scrollTop: rect.height,
+      });
+  }).exec()
+}
+ 
 })
+ 

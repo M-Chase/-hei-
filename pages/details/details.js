@@ -65,7 +65,7 @@ Page({
       product_id: this.data.product_info.id,
       reason: this.data.reason
     }
-    request.request('https://www.xianwuzu.cn:443/wx_Code/report', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/report', 'GET', data).then(function (res) {
       wx.showToast({
         title: '举报已提交',
         duration: 3000
@@ -219,7 +219,7 @@ Page({
         openid: app.globalData.openid
       };
 
-      request.request('https://www.xianwuzu.cn:443/wx_Code/collect', 'GET', data)
+      request.request('https://www.yunluheis.cn:443/wx_Code/collect', 'GET', data)
     }
 
 
@@ -290,7 +290,7 @@ Page({
         openid2: '',
         openid2_1: openid2_1
       }
-      request.request('https://www.xianwuzu.cn:443/wx_Code/submit_chat', 'POST', data).then(function (res) {
+      request.request('https://www.yunluheis.cn:443/wx_Code/submit_chat', 'POST', data).then(function (res) {
         if(res=='1')
         {
           wx.showModal({
@@ -449,7 +449,7 @@ Page({
     var data = {
       product_id: product_id
     }
-    request.request("https://www.xianwuzu.cn:443/wx_Code/getComment", 'GET', data).then(function (res) {
+    request.request("https://www.yunluheis.cn:443/wx_Code/getComment", 'GET', data).then(function (res) {
       console.log('details onShow floor_comment')
       console.log(res)
 
@@ -535,7 +535,7 @@ Page({
             timestamp:timestamp,
             owner: 1,
           }
-          request.request('https://www.xianwuzu.cn/wx_Code/delete_comment', 'GET', data).then(function (res) {
+          request.request('https://www.yunluheis.cn/wx_Code/delete_comment', 'GET', data).then(function (res) {
             // var floor_comment = that.timestamp_date(res);
 
           })
@@ -577,7 +577,7 @@ Page({
           var data = { product_id: product_id }
           var pos = app.globalData.id_pos[product_id]
           console.log(that.data.product_info)
-          request.request('https://www.xianwuzu.cn:443/wx_Code/delete_product', 'GET', data).then(function (res) {
+          request.request('https://www.yunluheis.cn:443/wx_Code/delete_product', 'GET', data).then(function (res) {
             wx.getStorage({
               key: "publish_info",
               success: function (res) {
@@ -620,7 +620,7 @@ Page({
       success: function (res) {
         var data = { product_id: that.data.product_info.id, state: 2 }
         if (res.confirm) {
-          request.request('https://www.xianwuzu.cn:443/wx_Code/update_productState', 'GET', data).then(function (res) {
+          request.request('https://www.yunluheis.cn:443/wx_Code/update_productState', 'GET', data).then(function (res) {
             var pos = app.globalData.id_pos[that.data.product_info.id]
             wx.getStorage({
               key: "publish_info",
@@ -691,7 +691,7 @@ Page({
     var that = this
     if (pagesArr[pagesArr.length - 2].route == 'pages/index/index') {
       var data = { 'all_sell_buy': '全部' }
-      request.request('https://www.xianwuzu.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
+      request.request('https://www.yunluheis.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
         var publish_info = res['publish']
         wx.setStorage({
           key: "publish_info",
@@ -736,7 +736,7 @@ Page({
       success: function (res) {
         var data = { product_id: that.data.product_info.id, state: 0 }
         if (res.confirm) {
-          request.request('https://www.xianwuzu.cn:443/wx_Code/update_productState', 'GET', data).then(function (res) {
+          request.request('https://www.yunluheis.cn:443/wx_Code/update_productState', 'GET', data).then(function (res) {
             wx.showToast({
               title: '已重新发布',
               duration: 3000

@@ -195,9 +195,7 @@
               </view> 
           </van-col> 
           <van-col span="4" class="submit_chat">
-              <button bindtap = 'submit_chat' ty
-			  
-			  pe="primary" size="mini" style="font-size:30rpx;z-index:4;">发送</button>
+              <button bindtap = 'submit_chat' type="primary" size="mini" style="font-size:30rpx;z-index:4;">发送</button>
           </van-col>
       </view>
     </view>

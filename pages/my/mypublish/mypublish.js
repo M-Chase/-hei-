@@ -67,7 +67,7 @@ Page({
   onShow: function () {
     var data = { openid: app.globalData.openid }
     var that = this
-    request.request('https://www.xianwuzu.cn:443/wx_Code/mypublish', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/mypublish', 'GET', data).then(function (res) {
       console.log(res)
       var mypublish_info = res
       for (var i = 0; i < mypublish_info.length; i++) {
@@ -205,7 +205,7 @@ Page({
           mypublish_info.splice(id, 1)
           that.setData({ mypublish_info: mypublish_info })
 
-          request.request('https://www.xianwuzu.cn:443/wx_Code/delete_product', 'GET', data).then(function (res) {
+          request.request('https://www.yunluheis.cn:443/wx_Code/delete_product', 'GET', data).then(function (res) {
           })
           wx.getStorage({
             key: "publish_info",
@@ -239,7 +239,7 @@ Page({
 
         var data = { product_id: product_id, state: state }
         if (res.confirm) {          
-          request.request('https://www.xianwuzu.cn:443/wx_Code/update_productState', 'GET', data).then(function (res) {
+          request.request('https://www.yunluheis.cn:443/wx_Code/update_productState', 'GET', data).then(function (res) {
             wx.showToast({
               title: title,
               duration: 3000

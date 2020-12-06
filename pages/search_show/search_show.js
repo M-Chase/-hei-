@@ -105,7 +105,7 @@ Page({
 
 
     var data = { product_id: pub_id }
-    request.request('https://www.xianwuzu.cn:443/wx_Code/update_pageView', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/update_pageView', 'GET', data).then(function (res) {
     })
     wx.navigateTo({url: "../details/details"})
 

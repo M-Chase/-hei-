@@ -19,9 +19,9 @@ App({
           var data = {
             code: res.code,
           }
-          request.request('https://www.xianwuzu.cn:443/wx_Code/getOpenId', 'GET', data = data).then(function (res) {
+          request.request('https://www.yunluheis.cn:443/wx_Code/getOpenId', 'GET', data = data).then(function (res) {
 
-            request.request('https://www.xianwuzu.cn:443/wx_Code/is_black', 'GET', data = {openid:res}).then(function (black) {
+            request.request('https://www.yunluheis.cn:443/wx_Code/is_black', 'GET', data = {openid:res}).then(function (black) {
               if (black.length>0)
                 that.to_black(black[0])
       
@@ -72,7 +72,7 @@ publish_collectid:function(openid)
   var that = this
   //获取收藏
   var data = {openid:openid}
-  request.request('https://www.xianwuzu.cn:443/wx_Code/collectid','GET',data).then(function(res)
+  request.request('https://www.yunluheis.cn:443/wx_Code/collectid','GET',data).then(function(res)
   {
     that.globalData.star_ids = res
 
@@ -84,7 +84,7 @@ publish_collectid:function(openid)
 {
   var that = this
   var data = {openid:openid}
-    request.request('https://www.xianwuzu.cn:443/wx_Code/get_userInfo', 'GET', data).then(function (res)
+    request.request('https://www.yunluheis.cn:443/wx_Code/get_userInfo', 'GET', data).then(function (res)
     {
       var userInfo = res['user_info']
       if(userInfo!=null)
@@ -117,7 +117,7 @@ publish_collectid:function(openid)
     //用户登录后，即可获取发布信息
     var that = this
     var data = { 'all_sell_buy': '全部' }
-    request.request('https://www.xianwuzu.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
       var publish_info = res['publish']
       wx.setStorage({
         key: "publish_info",

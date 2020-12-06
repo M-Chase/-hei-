@@ -90,7 +90,7 @@ Page({
       openid: app.globalData.openid
     }
     var that = this
-    request.request('https://www.xianwuzu.cn:443/wx_Code/num_publishcommentcollect', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/num_publishcommentcollect', 'GET', data).then(function (res) {
       console.log("bbbbbbbbbbbbbbbbbbb")
       console.log(res)
       that.setData({ 

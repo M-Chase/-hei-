@@ -75,7 +75,7 @@ Page({
     })
 
     var data = { product_id: pub_id}
-    request.request('https://www.xianwuzu.cn:443/wx_Code/update_pageView', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/update_pageView', 'GET', data).then(function (res) {
     })
 
 
@@ -189,7 +189,7 @@ Page({
     //用户登录后，即可获取发布信息
     var that = this
     var data = { 'all_sell_buy': '全部' }
-    request.request('https://www.xianwuzu.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
       var publish_info = res['publish']
       wx.setStorage({
         key: "publish_info",
@@ -234,7 +234,7 @@ Page({
   {
     var that = this
     var data = { openid: openid }
-    request.request('https://www.xianwuzu.cn:443/wx_Code/get_unreadnum', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/get_unreadnum', 'GET', data).then(function (res) {
 
       var unread_num = res
       if (unread_num == 0)
@@ -266,7 +266,7 @@ Page({
   {
     var data = { 'all_sell_buy': sellbuy }
     var that = this
-    request.request('https://www.xianwuzu.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
       var publish_info = util.span_time(res['publish'])
       that.setData({ 'publish_info': publish_info })
       if (data['all_sell_buy'] == '全部') {
@@ -298,7 +298,7 @@ Page({
         scrollTop: 0
       })
       
-      request.request('https://www.xianwuzu.cn:443/wx_Code/search', 'GET', data).then(function (res) {
+      request.request('https://www.yunluheis.cn:443/wx_Code/search', 'GET', data).then(function (res) {
         console.log(res)
         // that.setData({
         //   publish_info: util.span_time(res),

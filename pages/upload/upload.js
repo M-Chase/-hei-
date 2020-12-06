@@ -240,7 +240,7 @@ Page({
         console.log(formData)
   
         wx.uploadFile({
-          url: 'https://www.xianwuzu.cn:443/wx_Code/publish',  //填写实际接口   
+          url: 'https://www.yunluheis.cn:443/wx_Code/publish',  //填写实际接口   
           header: {
             "Content-Type": "application/json"
           },
@@ -290,7 +290,7 @@ Page({
   uploadfile: function (formData, imgUrl) {
     var that = this
     formData['imgUrl'] = imgUrl
-    request.request('https://www.xianwuzu.cn:443/wx_Code/uploadFile', 'POST', formData).then(function (res) {
+    request.request('https://www.yunluheis.cn:443/wx_Code/uploadFile', 'POST', formData).then(function (res) {
       console.log('jjjjjjjjjjjjjjjj')
       console.log(res)
       if (res['result'] == '1') {

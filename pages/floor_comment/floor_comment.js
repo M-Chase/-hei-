@@ -74,7 +74,7 @@ Page({
         openid2: openid2,
         openid2_1: openid2_1
       }
-      request.request('https://www.xianwuzu.cn:443/wx_Code/submit_chat', 'POST', data).then(function(res){
+      request.request('https://www.yunluheis.cn:443/wx_Code/submit_chat', 'POST', data).then(function(res){
         if (res == '1') {
           wx.showModal({
             content: "您的发布内容可能包括政治，色情，违反等有害信息,请去除后重新发布",
@@ -146,7 +146,7 @@ Page({
             owner:0,
           }
 
-          request.request('https://www.xianwuzu.cn:443/wx_Code/delete_comment', 'GET', data).then
+          request.request('https://www.yunluheis.cn:443/wx_Code/delete_comment', 'GET', data).then
             (function (res) {
             })
           app.globalData.floor_comment[app.globalData.floor_id].splice(id, 1)
