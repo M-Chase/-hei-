@@ -7,12 +7,14 @@
     <radio-group class="group1" bindchange="buy_sell" name="comment2">
       <view class="picker_comment1">
         <view class="attr_value1">
-          <radio  value='出售' checked='出售'></radio>
-          <label class='radio_label1'>我要出售</label>
+          <radio  value='出售' checked='出售'>
+            <label class='radio_label1'>我要出售</label>
+          </radio>
         </view>
         <view class="attr_value1">
-          <radio  value='求购'></radio>
-          <label class='radio_label1'>我要求购</label>
+          <radio  value='求购'>
+            <label class='radio_label1'>我要求购</label>
+          </radio>
         </view>
       </view>
     </radio-group>

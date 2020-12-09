@@ -69,8 +69,8 @@
         <block wx:for="{{product_info.imgUrl1}}" wx:for-item="imgid" wx:for-index="index">
 		<!-- <block wx:for="{{[0,1,2,3,4,5,6,7,8]}}" wx:for-index="imgid"> -->
 		<!-- <image src="{{fn.imgpath(product_info.imgUrl,imgid)}}" mode="widthFix" class='my-picture' bindtap = "previewImg" data-imgid="{{imgid}}"></image> -->
-		<image wx:if="{{(imgNum<=9 && imgNum>4)||imgNum==3}}" src="{{imgid}}" mode="widthFix" class='my-picture-9' bindtap = "previewImg" data-imgid="{{index}}" style="width:220rpx; height:220rpx;"></image>
-		<image wx:if="{{imgNum<=4 && imgNum!=3}}" src="{{imgid}}" mode="widthFix" class='my-picture-4' bindtap = "previewImg" data-imgid="{{index}}" style="width:330rpx; height:330rpx;"></image>
+		<image wx:if="{{(imgNum<=9 && imgNum>4)||imgNum==3}}" src="{{imgid}}" mode="aspectFill" class='my-picture-9' bindtap = "previewImg" data-imgid="{{index}}" style="width:220rpx; height:220rpx;"></image>
+		<image wx:if="{{imgNum<=4 && imgNum!=3}}" src="{{imgid}}" mode="aspectFill" class='my-picture-4' bindtap = "previewImg" data-imgid="{{index}}" style="width:330rpx; height:330rpx;"></image>
         </block>
   	</view>
       </view>

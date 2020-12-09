@@ -39,11 +39,11 @@
   position: relative;
 }
 .radio_label1 {
-  display: block;
-  text-align: center;
-  line-height: 50rpx;
+  position: absolute;
   font-size: 32rpx;
-  padding-top: 10rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 radio {
   box-sizing: border-box;
