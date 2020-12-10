@@ -348,21 +348,25 @@ Page({
           var size = res.tempFiles[0].size
           console.log("jjjjjjjjjjjjjjjj")
           console.log(size)
+			
           if(size<=3000000)
           {
             that.setData({
-              img_arr: img_arr.concat(res.tempFilePaths),
+				img_arr: img_arr.concat(res.tempFilePaths),
             })
           }
           else
           {
-            wx.showModal({
-              content: "上传图片不能大于3M!",
-              showCancel: false,
-            }) 
+			  for (var idx in res.tempFilePaths) {
+				  this.compressImage(res.tempFilePaths[idx])
+			  }  
+            // wx.showModal({
+            //   content: "上传图片不能大于3M!",
+            //   showCancel: false,
+            // }) 
           }
     
-          console.log(img_arr)
+        //   console.log(img_arr)
           this.disabled_pub();
           this.data.pub_count = 0;
   
@@ -371,6 +375,28 @@ Page({
     }
 
   },
+//   压缩图片
+	compressImage:function(imgUrl){
+		var that=this;
+		var img_arr = that.data.img_arr;
+		console.log("111")
+		wx.compressImage({
+			src: imgUrl,
+			quality: 60,
+			success: res => {
+				console.log("压缩成功")
+				console.log(res)
+				var url = res.tempFilePath.substring(0, res.tempFilePath.length - 9);
+				url=url+".jpg"
+				console.log(url)
+				that.setData({
+					img_arr: img_arr.concat(url),
+				})
+				// return res.tempFilePath
+				// console.log(that.data.img_arr)
+			}
+		})
+	},
 
   //删除照片功能与预览照片功能 
   deleteImg: function (e) {
