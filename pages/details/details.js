@@ -302,8 +302,9 @@ Page({
         }
         else
         {
+		  that.update_comment(timestamp, chat)
           that.update_publishinfo(1)
-          that.update_comment(timestamp, chat)
+          
         }
 
         // var floor_comment = that.timestamp_date(res);
@@ -366,17 +367,35 @@ Page({
         var publish_info = res.data
         var id_pos = app.globalData.id_pos
         var pos = id_pos[that.data.product_info.id]
-        if (publish_info.indexOf(pos)>-1)
-        {
-          publish_info[pos].comment_ids += n
-          wx.setStorage({
-            key: "publish_info",
-            data: publish_info
-          })     
-        }
+		//
+		  publish_info[pos].comment_ids += n
+		  wx.setStorage({
+			  key: "publish_info",
+			  data: publish_info
+		  })
+		  //
+        // if (publish_info.indexOf(pos)>-1)
+        // {
+        //   publish_info[pos].comment_ids += n
+        //   wx.setStorage({
+        //     key: "publish_info",
+        //     data: publish_info
+        //   })     
+        // }
 
       }
     });
+	wx.getStorage({
+		key: 'product_info',
+		success: function(res) {
+			var product_info=res.data
+			product_info.comment_ids+=n
+			wx.setStorage({
+				key: "product_info",
+				data: product_info
+			})
+		},
+	})
 
   },
   floor: function (e) {
