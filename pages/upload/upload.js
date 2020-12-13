@@ -21,7 +21,6 @@ Page({
     comment2: '',
     color: '#DCDCDC',
     disabled: true,
-    //
     price: '',
     price_warning: '',
     title: '',
@@ -81,7 +80,6 @@ Page({
       text_info: event.detail.value
     });
     this.data.pub_count = 0;
-
   },
 
   get_title: function (e) {
@@ -94,7 +92,6 @@ Page({
     })
     this.disabled_pub();
     this.data.pub_count = 0;
-
   },
 
   //上传图片到服务器 
@@ -348,25 +345,8 @@ Page({
           var size = res.tempFiles[0].size
           console.log("jjjjjjjjjjjjjjjj")
           console.log(size)
+		  that.compressImage(res.tempFilePaths,0, res.tempFiles.length)
 			
-          if(size<=3000000)
-          {
-            that.setData({
-				img_arr: img_arr.concat(res.tempFilePaths),
-            })
-          }
-          else
-          {
-			  for (var idx in res.tempFilePaths) {
-				  this.compressImage(res.tempFilePaths[idx])
-			  }  
-            // wx.showModal({
-            //   content: "上传图片不能大于3M!",
-            //   showCancel: false,
-            // }) 
-          }
-    
-        //   console.log(img_arr)
           this.disabled_pub();
           this.data.pub_count = 0;
   
@@ -376,26 +356,29 @@ Page({
 
   },
 //   压缩图片
-	compressImage:function(imgUrl){
+	compressImage:function(imgUrls,nowNum,endNum){
 		var that=this;
 		var img_arr = that.data.img_arr;
 		console.log("111")
-		wx.compressImage({
-			src: imgUrl,
-			quality: 60,
-			success: res => {
-				console.log("压缩成功")
-				console.log(res)
-				var url = res.tempFilePath.substring(0, res.tempFilePath.length - 9);
-				url=url+".jpg"
-				console.log(url)
-				that.setData({
-					img_arr: img_arr.concat(url),
-				})
-				// return res.tempFilePath
-				// console.log(that.data.img_arr)
-			}
-		})
+		if (nowNum<=endNum){
+			wx.compressImage({
+				src: imgUrls[nowNum],
+				quality: 60,
+				success: res => {
+					nowNum += 1;
+					console.log("压缩成功")
+					console.log(res)
+					img_arr.push(res.tempFilePath)
+					that.setData({
+						img_arr: img_arr,
+					})
+					that.compressImage(imgUrls, nowNum, endNum)
+					// return res.tempFilePath
+					// console.log(that.data.img_arr)
+				}
+			})
+		}
+		
 	},
 
   //删除照片功能与预览照片功能 
