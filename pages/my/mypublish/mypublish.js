@@ -71,9 +71,12 @@ Page({
       console.log(res)
       var mypublish_info = res
       for (var i = 0; i < mypublish_info.length; i++) {
+
         mypublish_info[i].time = util.formatDate(mypublish_info[i].timestamp)
-        if (mypublish_info[i].price == -1)
-          mypublish_info[i].price = '可商议'
+        if (mypublish_info[i].price == -1){
+           mypublish_info[i].price = '可商议'
+        }
+        mypublish_info[i].imgUrl1 = mypublish_info[i].imgUrl.split(",")
       }
       that.setData({ mypublish_info: mypublish_info, ready:true})
       wx.setStorage({

@@ -33,8 +33,10 @@ Page({
       var other_publish_info = res
       for (var i = 0; i < other_publish_info.length; i++) {
         other_publish_info[i].time = util.formatDate(other_publish_info[i].timestamp)
-        if (other_publish_info[i].price==-1)
+        if (other_publish_info[i].price==-1){
           other_publish_info[i].price = '可商议'
+        }
+        other_publish_info[i].imgUrl1 =other_publish_info[i].imgUrl.split(",")
       }
       that.setData({ other_publish_info: other_publish_info })
     })

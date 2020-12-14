@@ -123,7 +123,7 @@
               <!--************右边是图片板块************--> 
               <van-col span="8">
                 <view class='userinfo-picture'>
-                  <image style="width:220rpx;height: 220rpx;" src = "{{item.imgUrl}}" mode='aspectFill' ></image>
+                  <image style="width:220rpx;height: 220rpx;" src = "{{item.imgUrl1[0]}}" mode='aspectFill' ></image>
                 </view>
               </van-col>
             </van-row>
@@ -200,7 +200,7 @@
               <!--************右边是图片板块************--> 
               <van-col span="8">
                 <view class='userinfo-picture'>
-                  <image style="width:220rpx;height: 220rpx;" src = "{{item.imgUrl}}" mode='aspectFill' ></image>
+                  <image style="width:220rpx;height: 220rpx;" src = "{{item.imgUrl1[0]}}" mode='aspectFill' ></image>
                 </view>
               </van-col>
             </van-row>
@@ -276,8 +276,10 @@
               </van-col>
               <!--************右边是图片板块************--> 
               <van-col span="8">
+                <view wx:if="{{item.imgUrl1.length>0}}">
                 <view class='userinfo-picture'>
-                  <image style="width:220rpx;height: 220rpx;" src = "{{item.imgUrl}}" mode='aspectFill' ></image>
+                  <image style="width:220rpx;height: 220rpx;" src = "{{item.imgUrl1[0]}}" mode='aspectFill' ></image>
+                </view>
                 </view>
               </van-col>
             </van-row>

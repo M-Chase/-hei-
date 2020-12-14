@@ -78,9 +78,10 @@ Page({
 
       for (var i = res.length - 1; i >= 0; i--) {
           res[i].time = util.formatDate(res[i].timestamp)
-          if (res[i].price == -1)
+          if (res[i].price == -1){
             res[i].price = '可商议'
-
+          }
+          res[i].imgUrl1 = res[i].imgUrl.split(",")
           mycomment = mycomment.concat(res[i])
       }
       wx.setStorage({
@@ -92,7 +93,7 @@ Page({
         mycomment: mycomment,
         ready: true
       })
-
+      
     })
 
   },

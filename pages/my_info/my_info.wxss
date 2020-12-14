@@ -2,11 +2,14 @@
 
 /*整条信息的外框*/
 .userinfo-information{
-  padding:10px;
+  padding:10px 0;
   width:100%;
   height:auto;
 }
 
+.underline-kill{
+  margin-left: 10px;
+}
 /*发布者头像*/
 .userinfo-avatar {
   width: 80rpx;
@@ -76,7 +79,7 @@
   margin-top:10px;
   background: rgb(222, 222, 222);
   height:1px;
-  margin-left:110rpx;
+  margin-left:90rpx;
 }
 
 .level_image{
@@ -84,10 +87,11 @@
   height:25px;
   width:25px; 
 }
+
 .notice{
   width:100%;
   height:auto;
-  padding:15px 15px 15px 15px;
+  padding:15px 0;
 }
 
 .notice_image{

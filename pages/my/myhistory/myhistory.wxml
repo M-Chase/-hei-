@@ -60,7 +60,7 @@
 
     <!--************右边是图片板块************--> 
     <van-col span="8">  
-      <image src = "{{item.imgUrl}}"mode='aspectFill' class = 'userinfo-picture'></image>
+      <image src = "{{item.imgUrl1[0]}}"mode='aspectFill' class = 'userinfo-picture'></image>
     </van-col>
 
   </van-row>

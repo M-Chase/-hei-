@@ -44,6 +44,7 @@ Page({
     if (this.endTime - this.startTime < 350)
       {
       var collect = this.data.collect;
+      console.log(collect)
       var id = e.currentTarget.id;
       var product_info = this.data.collect[id];
       app.globalData.product_info = product_info
@@ -76,15 +77,19 @@ Page({
     var that = this
     var data = { openid: app.globalData.openid }
     request.request('https://www.yunluheis.cn:443/wx_Code/mycollect', 'GET', data).then(function (res) {
+      console.log(res)
       var collect = []
 
       for (var i = res.length - 1; i >= 0; i--) {
         res[i].span_time = util.formatDate(res[i].timestamp)
-        if (res[i].price == -1)
+        if (res[i].price == -1){
           res[i].price = '可商议'
 
+        }
+        res[i].imgUrl1 = res[i].imgUrl.split(",")
         collect = collect.concat(res[i])
       }
+    
       wx.setStorage({
         key: "collect",
         data: collect
@@ -97,6 +102,7 @@ Page({
     })
 
   },
+  /*
   onshow: function () {
     var collect = []
     var star_ids = app.globalData.star_ids //'收藏的id'
@@ -135,7 +141,7 @@ Page({
 
   },
 
-
+*/
 
 
   all_sell_buy: function (e) {

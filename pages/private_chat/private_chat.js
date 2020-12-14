@@ -1,15 +1,15 @@
 const app = getApp();
 var request = require("../../utils/request.js");
 var util = require("../../utils/util.js")
-
+var windowHeight = wx.getSystemInfoSync().windowHeight;
 Page({
 
   data: {
     messages: [],//存储所有的交流数据
-    scrollTop: 0,
+    //scrollTop: 0,
     lastId: "msg1",
     message: '',
-    scrollHeight: 0,
+    scrollHeight: '100vh',
     lastID: '',
     other_info: { 'openid': 'osIqX5L0GcVzGmV8_HqQI6UbB9bo', 'nickname': '阿八' },//进来即获取的信息
     websocketUrl: 'wss://www.yunluheis.cn:443/chat/',
@@ -17,6 +17,9 @@ Page({
     sender_ids: [],
     my_info: {},
     isme: false,
+    move: true,
+    inputBottom: 0,
+    toView: ''
   },
 
   onLoad: function () {
@@ -40,7 +43,7 @@ Page({
     // that.setData({ websocketUrl: url });
     wx.getSystemInfo({
       success: function (res) {
-        that.setData({ scrollHeight: res.windowHeight - 40 })
+      //  that.setData({ scrollHeight: res.windowHeight - 40 })
       },
     })
 
@@ -58,6 +61,7 @@ Page({
     request.request(url_mysql, 'POST').then(function (res) {
       console.log('private_chat onload messages')
       console.log(res);
+   //  var move = that.data.move
       var messages = that.data.messages;
       for (var i = 0; i < res.length; i++) {
         var message_time_isme = {}
@@ -74,14 +78,15 @@ Page({
           message_time_isme['isme'] = false
         messages.push(message_time_isme);
       }
-      var scrollTop = (messages.length) * 100;
+     // var scrollTop = (messages.length) * 100;
       var windowHeight = that.data.scrollHeight;
-      if (scrollTop < windowHeight) {
-        scrollTop = 0;
-      }
+     // if (scrollTop < windowHeight) {
+      //  scrollTop = 0;
+      //  move = !move;
+     // }
       console.log('fffffffffffffffffffffffffff')
       console.log(messages)
-      that.setData({ messages: messages, lastId: "msg" + messages.length - 1, scrollTop: scrollTop });
+      that.setData({ messages: messages, lastId: "msg" + (messages.length - 1) });
     })
 
     wx.connectSocket({
@@ -103,6 +108,7 @@ Page({
       wx.onSocketMessage(function (res) {
         console.log('private_chat onload msg')
         console.log(res.data)
+       // var move = that.data.move
         if (res != '') {
           var messages = that.data.messages;
           var message_time_isme = {}
@@ -121,9 +127,10 @@ Page({
           var height = messages.length * 100;
           var windowHeight = that.data.scrollHeight;
           if (height < windowHeight) {
-            height = 0;
+          //  height = 0;
+           // move = !move;
           }
-          that.setData({ messages: messages, lastId: "msg" + messages.length - 1, scrollTop: height })
+          that.setData({ messages: messages, lastId: "msg" + (messages.length - 1)})
         }
       });//func回调可以拿到服务器返回的数据
 
@@ -257,14 +264,46 @@ Page({
    */
 
 
-  changeScrollvalue: function () {
-    var length = 50;
+  changeScrollvalue: function (e) {
+    //var length = 50;
     // var length = this.messages.length;
+    console.log(windowHeight)
+
     var scrollTop = this.data.messages.length * 80;
-    if(scrollTop>640)
-    this.setData({ scrollTop: scrollTop })
+    console.log(scrollTop)
+    console.log(e.detail.height)
+    console.log(this.data.messages.length - 1)
+    this.setData({
+      scrollHeight: (windowHeight - e.detail.height) + 'px'
+    });
+    this.setData({
+      lastId:  'msg'+ (this.data.messages.length - 1),
+      inputBottom: e.detail.height + 'px'
+    })
+    /*
+    if(scrollTop>640){
+      this.setData({ scrollTop: scrollTop, move:true})
+    }else{
+      this.setData({ inputBottom:e.detail.height+'px' , move: false})
+    }
+    */
+
   },
 
+  blur: function (e) {
+    /*
+    var that = this;
+    that.setData({
+    inputBottom: 0
+    })*/
+    this.setData({
+      scrollHeight: '100vh',
+      inputBottom: 0
+    })
+    this.setData({
+      lastId: 'msg'+ (this.data.messages.length - 1)
+    })
+},
   /**
 
    * 记录msg
@@ -309,7 +348,7 @@ Page({
     if (windowHeight > height) {
       height = 0;
     }
-    this.setData({ messages: messages, message: '', lastId: "msg" + messages.length - 1, scrollTop: height });
+    this.setData({ messages: messages, message: '', lastId: "msg" + (messages.length - 1)});
     // this.data.messages = messages
     console.log("afterafterafterafterafterafter")
     console.log(this.data.message)

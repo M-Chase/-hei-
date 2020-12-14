@@ -290,8 +290,9 @@ Page({
   uploadfile: function (formData, imgUrl) {
     var that = this
     formData['imgUrl'] = imgUrl
+    console.log(formData)
     request.request('https://www.yunluheis.cn:443/wx_Code/uploadFile', 'POST', formData).then(function (res) {
-      console.log('jjjjjjjjjjjjjjjj')
+      console.log('jjjjjjjjjjjjjjjjkkkkk')
       console.log(res)
       if (res['result'] == '1') {
         wx.showModal({

@@ -1,9 +1,9 @@
 <!--pages/my_info/my_info.wxml-->
 
-<van-tabs active="{{ active }}" bind:change="onChange">
+<van-tabs active="{{ active }}" bind:change="onChange" >
   <!--私信页面-->
   <van-tab title="私信">
-    <view wx:for = "{{myinfos}}"  bindlongtap="delete_news" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" id = "{{index}}">
+    <view wx:for = "{{myinfos}}"  class="underline-kill" bindlongtap="delete_news" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" id = "{{index}}">
     <van-row>
       <view class='userinfo-information' id = "{{index}}" bindtap="gotoprivatechat">
         <van-col span="3"><image src = "{{item.image}}" class ='userinfo-avatar' mode = 'cover'></image></van-col>
@@ -37,7 +37,8 @@
 
   <!--消息通知页面-->
   <van-tab title="通知" dot="{{notices['count'][0]+notices['count'][1]}}">
-    <view class="notice" bindtap = 'system_notice'>
+    <view class="underline-kill">
+      <view class="notice" bindtap = 'system_notice'>
       <van-row>
         <van-col><image src="../image/system_notice.png" class="notice_image"></image></van-col>
         <van-col><view class="notice_text">系统通知</view></van-col>
@@ -45,10 +46,12 @@
           <van-col  class="info-num"><van-tag round type="danger">NEW</van-tag></van-col>
         </view>
       </van-row>
+      </view>
     </view>
     <!--分割线-->
-      <view class="divLine2"></view>
-    <view class="notice" bindtap = 'reply_notice'>
+    <view class="divLine2"></view>
+    <view class="underline-kill">
+      <view class="notice" bindtap = 'reply_notice'>
       <van-row>
         <van-col><image src="../image/reply_notice.png" class="notice_image"></image></van-col>
         <van-col><view class="notice_text">回复</view></van-col>
@@ -56,6 +59,7 @@
           <van-col  class="info-num"><van-tag round type="danger">NEW</van-tag></van-col>
         </view>
       </van-row> 
+      </view>
     </view>
     <!--分割线-->
     <view class="divLine2"></view>

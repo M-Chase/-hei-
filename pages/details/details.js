@@ -14,7 +14,7 @@ Page({
     comment_collect: 0,//页面底下评论与收藏
     icon: ["star-o", "star"],//页面低下收藏显示的图片
     product_info: {},//用户发布的信息
-	imgNum:"",
+	  imgNum:"",
     hidden_chat: true,//评论按钮是否隐藏
     chat: '',//评论文本
     floor_comment: {},//所有的评论
@@ -130,7 +130,7 @@ Page({
 
     that.setData({
       state: product_info.state,
-		imgNum: product_info.imgUrl1.length
+	  	imgNum: product_info.imgUrl1.length
     })
 
     that.isstar(product_info.id)
@@ -639,7 +639,7 @@ Page({
       success: function (res) {
         var data = { product_id: that.data.product_info.id, state: 2 }
         if (res.confirm) {
-          request.request('https://www.yunluheis.cn:443/wx_Code/update_productState', 'GET', data).then(function (res) {
+          request.request('https://www.yunluheis.cn:443/wx_Code/updateProductState', 'GET', data).then(function (res) {
             var pos = app.globalData.id_pos[that.data.product_info.id]
             wx.getStorage({
               key: "publish_info",

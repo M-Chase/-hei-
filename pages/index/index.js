@@ -46,7 +46,7 @@ Page({
       }
         this.setData({
           canIUse: false,
-          info_unreadnum:1
+          info_unreadnum: 1
           
       })  
   },
@@ -172,8 +172,8 @@ Page({
 
         console.log('publish_info ')
         var publish_info = res.data
-        console.log(publish_info[0].imgUrl)
-        console.log(publish_info.length)
+        //console.log(publish_info[0].imgUrl)
+        //console.log(publish_info.length)
         publish_info = util.span_time(publish_info)
         
         that.setData({
@@ -237,6 +237,7 @@ Page({
     request.request('https://www.yunluheis.cn:443/wx_Code/get_unreadnum', 'GET', data).then(function (res) {
 
       var unread_num = res
+      console.log(unread_num)
       if (unread_num == 0)
         unread_num = ''
       that.setData({ info_unreadnum: unread_num })
