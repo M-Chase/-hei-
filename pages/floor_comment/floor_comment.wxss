@@ -1,5 +1,10 @@
 /* pages/floor_comment/floor_comment.wxss */
-
+.home-page {
+  height: 160rpx;
+  width: 100%;
+  border: 0rpx solid red;
+  font-size: 60rpx;
+}
 
 /* pages/Details/Details.wxss */
 

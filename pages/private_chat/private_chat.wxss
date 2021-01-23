@@ -2,7 +2,12 @@ page{
   background:#ffffff;
 }
 /*昵称*/
-
+.home-page {
+  height: 160rpx;
+  width: 100%;
+  border: 0rpx solid red;
+  font-size: 60rpx;
+}
 /*聊天页面*/
 .chatPage{
   background: rgb(241, 238, 238);
@@ -116,11 +121,13 @@ page{
 }
 
 .msg-input{
+  padding-top: 6px;
   width: 70%;
-  height: 75%;
+  height: 68%;
   background: white;
   border-radius: 5px; 
-  font-size: 30rpx;
+  font-size: 33rpx;
+  
 }
 
 

@@ -1,4 +1,11 @@
 /* pages/my/my.wxss */
+.home-page {
+  height: 160rpx;
+  width: 100%;
+  border: 0rpx solid red;
+  font-size: 60rpx;
+}
+
 .my-avatar {
   width: 128rpx;
   height: 128rpx;

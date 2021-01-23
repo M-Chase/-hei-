@@ -1,12 +1,21 @@
 <!--pages/Details/Details.wxml-->
 <!--详情页面-->
-<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取权限</button>
+<nav-bar wx:if="{{!canIUse}}" navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view style='margin-top: {{height}}px'>
+  
+  <view wx:if="{{canIUse}}">
+    <view  style="position: absolute;top: 15%;left: 50%;transform: translate(-50%,-50%);"><image src="../image/logo.png" style="height:50px;width:50px;"></image></view>
+    <view  style="position: absolute;top: 22%;left: 50%;transform: translate(-50%,-50%);font-size:16px;">申请获取您的公开信息</view>
+    <view  style="position: absolute;top: 25%;left: 50%;transform: translate(-50%,-50%);font-size:16px;">（包括头像，昵称等）</view>
+    <button type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="font-size:12px;width:90%;margin-top:60%;">微信授权登录</button>
+  </view>
 
 <view wx:else>
   <!--headline为本条发布信息的标题行-->
   <scroll-view scroll-y="true" style="height:1500rpx;" scroll-into-view="{{id}}">
   <view id='ID0' >
-  <!--frame代表外框-->
+  <!--frame代表外框--> 
       <view class='frame' bindtap = 'publish_detail'>
         <van-row gutter="10">
           <van-col span="18">
@@ -109,7 +118,7 @@
                       <van-col span="3"><image class='TypeImage1' src='{{c_item[2]}}'></image></van-col>
                       <van-col span="21">
                         <van-row>
-                          <van-col class="visitor">{{c_item[3]}}</van-col>
+                          <van-col style="color:rgb(14, 153, 153);font-size:30rpx;">{{c_item[3]}}</van-col>
                           <van-col>
                             <view wx:if="{{c_item[8]==1}}" class="owner">
                               <van-tag round type="success">
@@ -126,7 +135,7 @@
                     </van-row>
                     <van-row  bindtap = 'floor' id = "{{f_ind}}">
                         <van-col offset="3">
-                          <view  style='margin-top:25rpx;margin-bottom:10rpx;' class="visitor_comment">
+                          <view  style='margin-top:15rpx;margin-bottom:5rpx;' class="visitor_comment">
                           {{c_item[7]}}
                           </view>
                         </van-col>
@@ -216,7 +225,7 @@
             <button class="btn" plain="true" bindtap='listenerActionSheet' open-type="share">
               <van-row>
                 <van-col><van-icon class="share" name="share"/></van-col>
-                <van-col><view>分享给微信朋友</view></van-col>
+                <van-col><view>分享</view></van-col>
               </van-row>
             </button>
           </action-sheet-item>
@@ -275,4 +284,5 @@
       </van-row>
     </view>
 
+</view>
 </view>

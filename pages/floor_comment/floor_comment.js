@@ -4,7 +4,7 @@ var request = require("../../utils/request.js")
 var util = require("../../utils/util.js")
 
 Page({
-
+ 
   /**
    * 页面的初始数据
    */
@@ -15,6 +15,13 @@ Page({
     placeholder: "请输入你的回复内容",
     other_info: {},//你私信的那个人的基本信息
     openid2_nickname:"",
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '评论详情', //导航栏 中间的标题
+    },
+ 
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 20 
   },
 
   /**
@@ -74,7 +81,7 @@ Page({
         openid2: openid2,
         openid2_1: openid2_1
       }
-      request.request('https://www.yunluheis.cn:443/wx_Code/submit_chat', 'POST', data).then(function(res){
+      request.request('https://www.yunluheishi.cn:443/wx_Code/submit_chat', 'POST', data).then(function(res){
         if (res == '1') {
           wx.showModal({
             content: "您的发布内容可能包括政治，色情，违反等有害信息,请去除后重新发布",
@@ -146,7 +153,7 @@ Page({
             owner:0,
           }
 
-          request.request('https://www.yunluheis.cn:443/wx_Code/delete_comment', 'GET', data).then
+          request.request('https://www.yunluheishi.cn:443/wx_Code/delete_comment', 'GET', data).then
             (function (res) {
             })
           app.globalData.floor_comment[app.globalData.floor_id].splice(id, 1)
@@ -220,21 +227,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.globalData.near = false
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    app.globalData.near = true
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.globalData.near = true
   },
 
   /**

@@ -12,7 +12,14 @@ Page({
     mycomment:[],
     select: false,
     tihuoWay: '默认排序',
-    ready:false
+    ready:false,
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '我的回复', //导航栏 中间的标题
+    },
+ 
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 20
   },
   bindShow() {
     this.setData({
@@ -70,10 +77,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    app.globalData.near = false
     // this.onshow()
     var that = this
     var data = {openid:app.globalData.openid}
-    request.request('https://www.yunluheis.cn:443/wx_Code/mycomment', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/wx_Code/mycomment', 'GET', data).then(function (res) {
       var mycomment = []
 
       for (var i = res.length - 1; i >= 0; i--) {
@@ -110,7 +118,7 @@ onshow:function(){
       console.log("ddddddddddddd")
       var publish_info = res.data
       //请求评论过的帖子id
-      request.request('https://www.yunluheis.cn:443/wx_Code/mycomment', 'GET', data).then(function (res) {
+      request.request('https://www.yunluheishi.cn:443/wx_Code/mycomment', 'GET', data).then(function (res) {
         var timestamp = parseInt(Date.parse(new Date()) / 1000);
         for (var i = res.length - 1; i >= 0; i--) {
           var pos = id_pos[res[i]]
@@ -186,14 +194,14 @@ onshow:function(){
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    app.globalData.near = true
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.globalData.near = true
   },
 
   /**

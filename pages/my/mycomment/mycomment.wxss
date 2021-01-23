@@ -1,3 +1,9 @@
+.home-page {
+  height: 160rpx;
+  width: 100%;
+  border: 0rpx solid red;
+  font-size: 60rpx;
+}
 /*内部分割线样式*/
 .divLine1{ 
   background: rgb(222, 222, 222);

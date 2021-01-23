@@ -1,5 +1,7 @@
 <!--index.wxml-->
-
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view style='margin-top: {{height}}px'>
   <van-row gutter="10" bindtap='my_information'>
     <van-col span="6"> 
       <image src = "{{my_img}}" class='my-avatar' mode='cover'></image>
@@ -89,3 +91,6 @@
 </van-cell>
 <!--分割线-->
 <!--<view class="my_divLine4"></view>-->
+</view>
+ 
+  

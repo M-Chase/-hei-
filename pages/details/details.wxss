@@ -1,7 +1,15 @@
 /* pages/Details/Details.wxss */
 
+.home-page {
+  height: auto;
+  width: 100%;
+  border: 0rpx solid red;
+  font-size: 60rpx;
+}
+
 .frame{
   padding:15px 13px 15px 15px;
+  border: 0px solid red;
 }
 /*发布者头像*/
 .my-avatar {
@@ -145,8 +153,9 @@ image{
 }
 /*楼主*/
 .owner{
+  /*
   padding-bottom:10rpx;
-  /* padding-left:15rpx;
+   padding-left:15rpx;
   padding-right:10rpx; */
   color:rgb(68, 184, 33);
   font-size:30rpx;
@@ -157,6 +166,7 @@ image{
   background-color: white;
   color:rgb(57, 58, 58);
   font-size:30rpx;
+  
 }
 
 /*回复评论者信息*/
@@ -164,6 +174,7 @@ image{
   color:rgb(14, 153, 153);
   font-size:30rpx;
   margin-left:100rpx;
+  
 }
 
 /*回复评论者的评论*/
@@ -172,6 +183,7 @@ image{
   color:darkgrey;
   font-size:30rpx;
   margin-top:80rpx;
+  
 }
 
 /*回复*/
@@ -193,6 +205,7 @@ image{
 .visitor_time{
   color:rgb(167, 168, 165);
   font-size:27rpx;  
+  padding-top: 15px;
 }
 
 

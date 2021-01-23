@@ -1,4 +1,8 @@
 <!--pages/upload/upload.wxml-->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view  style='margin-top: {{height}}px'>
+  
 <!--/*********发布类别和物品类别栏***********/-->
 <view class='page'>
 <view class='text_main1'>
@@ -76,7 +80,7 @@
   <view style='position: fixed; width: 100%;'>
     <view class='addImv'>   
       <view wx:for="{{img_arr}}" wx:key="index" class='upFile' bindtap="previewImg" data-imgid="{{index}}" >                       
-        <image class='itemImv' mode='aspectFill' src='{{item}}' data-index="{{index}}" bindlongpress="deleteImg" name="headimage" ></image> 
+        <image class='itemImv' mode='aspectFill' src='{{item}}' data-index="{{index}}" bindlongpress="deleteImg" name="headimage" webp="true"></image> 
         <view class="closeImv" catchtap="deleteImg" data-index="{{index}}"><van-icon name="cross"/></view>
       </view>      
         <image bindtap='upimg' class='CTtu' src="../image/ShangChuan.jpg"></image> 
@@ -85,3 +89,8 @@
     <button class='click' bindtap="submit" style = "background:{{color}}" disabled='{{disabled}}'>发布</button>  
   </view> 
 </form>
+
+<!--
+<canvas canvas-id="canvas" style="width:{{cWidth}}px;height:{{cHeight}}px;position: absolute;left:-1000px;top:-1000px;"></canvas>
+-->
+</view>

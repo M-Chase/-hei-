@@ -1,5 +1,11 @@
+     
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+ <view style='margin-top: {{height}}px'>
+   
+     
      <!--分割线-->
-    <view class="divLine1"></view>
+     <view class="divLine1"></view>
     <view wx:for = "{{mycomment}}" id='{{index}}' bindtap = 'detail_info'>
       <view class="one-message"><!--one-message代表一条信息-->
 
@@ -106,3 +112,5 @@
   <image src="../../image/kong.gif" style="width:40px;height:40px;"></image>
   <view style="margin-left:5px;display:flex;align-items:center;">您尚未发表任何评论哦~</view>     
 </view>
+ </view>
+ 

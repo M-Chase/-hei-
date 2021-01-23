@@ -10,6 +10,13 @@ Page({
     other_publish_info: [],//该用户发布的信息
     other_info: {},
     rank:3,
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '', //导航栏 中间的标题
+    },
+ 
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 20 
   },
 
   /**
@@ -20,7 +27,12 @@ Page({
     var other_info = app.globalData.other_info
     this.setData({other_info:other_info})
     this.publish(other_info.openid)
-
+    this.setData({
+      nvabarData: {
+        showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+        title: other_info.nickname //导航栏 中间的标题
+      }
+    })
 
 
 
@@ -28,7 +40,7 @@ Page({
   publish: function (openid) {
     var that = this
     var data = { openid: openid }
-    request.request('https://www.yunluheis.cn:443/wx_Code/mypublish', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/wx_Code/mypublish', 'GET', data).then(function (res) {
       console.log(res)
       var other_publish_info = res
       for (var i = 0; i < other_publish_info.length; i++) {
@@ -73,21 +85,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.globalData.near = false
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    app.globalData.near = true
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.globalData.near = true
   },
 
   /**

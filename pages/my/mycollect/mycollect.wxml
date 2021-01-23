@@ -1,3 +1,7 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view  style='margin-top: {{height}}px'>
+  
 <!--顶部固定-->
 <van-tabs class="top"  bind:change = 'all_sell_buy'>
   <van-tab title="全部" name="a"></van-tab>
@@ -115,3 +119,5 @@
   <image src="../../image/kong.gif" style="width:40px;height:40px;"></image>
   <view style="margin-left:5px;display:flex;align-items:center;">您还未收藏的任何相关发布内容哦~</view>  
 </view>
+</view>
+

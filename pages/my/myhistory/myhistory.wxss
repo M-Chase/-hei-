@@ -1,5 +1,10 @@
 /* pages/test/test.wxss */
-
+.home-page {
+  height: 160rpx;
+  width: 100%;
+  border: 0rpx solid red;
+  font-size: 60rpx;
+}
 .userinfo {
   display: flex;
   flex-direction: row;

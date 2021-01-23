@@ -10,7 +10,14 @@ Page({
    */
   data: {
     search_info:[],
-    ready:false
+    ready:false,
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '搜索结果', //导航栏 中间的标题
+    },
+ 
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 20 
   },
 
   /**
@@ -31,21 +38,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.globalData.near = false
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    app.globalData.near = true
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.globalData.near = true
   },
 
   /**
@@ -105,7 +112,7 @@ Page({
 
 
     var data = { product_id: pub_id }
-    request.request('https://www.yunluheis.cn:443/wx_Code/update_pageView', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/wx_Code/update_pageView', 'GET', data).then(function (res) {
     })
     wx.navigateTo({url: "../details/details"})
 

@@ -1,5 +1,10 @@
 /* pages/my_info/my_info.wxss */
-
+.home-page {
+  height: 160rpx;
+  width: 100%;
+  border: 0rpx solid red;
+  font-size: 60rpx;
+}
 /*整条信息的外框*/
 .userinfo-information{
   padding:10px 0;

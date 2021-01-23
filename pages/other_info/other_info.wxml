@@ -1,4 +1,8 @@
 <!--pages/other_info/other_info.wxml-->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view  style='margin-top: {{height}}px'>
+  
 <van-row gutter="10" bindtap='my_info'>
     <van-col span="6"> 
       <image src = "{{other_info.avatarUrl}}" class='my-avatar' mode='cover'></image>
@@ -291,3 +295,5 @@
       </van-tab><!--他的求购信息结束-->
 
       </van-tabs>
+</view>
+ 

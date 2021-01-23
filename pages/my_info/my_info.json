@@ -9,6 +9,7 @@
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs",
     "van-tabbar": "/miniprogram_npm/vant-weapp/tabbar/index",
     "van-tabbar-item": "/miniprogram_npm/vant-weapp/tabbar-item/index",
-    "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+    "nav-bar": "/pages/navbarData/navbarData"
   }
 }

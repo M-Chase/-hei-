@@ -10,7 +10,13 @@ Page({
     myinfos: [],
     active: 0,
     notices:{},
-    ready:false
+    ready:false,
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '消息', //导航栏 中间的标题
+    },
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 20 
   },
   onChange(event) {
     this.setData({ active: event.detail });
@@ -39,9 +45,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   // app.globalData.near = false
+    console.log(app.globalData.near)
     wx.setNavigationBarTitle({
       title: '消息',
     })
+    
 
   },
   timestamp_date: function (myinfos) {
@@ -60,13 +69,15 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    //app.globalData.near = false
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+   // app.globalData.near = true
+    console.log(app.globalData.near)
     this.show_news()
     this.notice()
   },
@@ -74,7 +85,7 @@ Page({
   show_news:function(){
     var data = { openid: app.globalData.openid }
     var that = this
-    request.request('https://www.yunluheis.cn:443/chat/getNews', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/chat/getNews', 'GET', data).then(function (res) {
       console.log(res)
       var myinfos = that.timestamp_date(res)
       console.log('jjjjjjjjjjjjjjjjjjjjj')
@@ -104,7 +115,7 @@ Page({
           var receiver_id = other_info.openid
           var data = { sender_id: sender_id, receiver_id: receiver_id }
  
-            request.request('https://www.yunluheis.cn:443/chat/update_id1', 'GET', data).then(function (res) {
+            request.request('https://www.yunluheishi.cn:443/chat/update_id1', 'GET', data).then(function (res) {
               that.show_news()
             })
 
@@ -117,7 +128,7 @@ Page({
   {
     var that = this
     var data = {openid:app.globalData.openid}
-    request.request('https://www.yunluheis.cn:443/wx_Code/user_notice', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/wx_Code/user_notice', 'GET', data).then(function (res) {
 
       var notices = res
       notices['system'] = that.timestamp_date_notice(notices['system'])
@@ -132,7 +143,7 @@ Page({
   system_notice:function()
   {
     var data = { openid: app.globalData.openid }
-    request.request('https://www.yunluheis.cn:443/wx_Code/isnew', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/wx_Code/isnew', 'GET', data).then(function (res) {
       wx.navigateTo({url:'./system_notice/system_notice'})
     })
   },
@@ -140,7 +151,7 @@ Page({
   reply_notice:function()
   {
     var data = { openid: app.globalData.openid }
-    request.request('https://www.yunluheis.cn:443/wx_Code/isnew2', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/wx_Code/isnew2', 'GET', data).then(function (res) {
       wx.navigateTo({ url: './reply_notice/reply_notice' })
     })
   },
@@ -159,16 +170,15 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+   // app.globalData.near = false
   },
-
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+   // app.globalData.near = false
   },
-
+ 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

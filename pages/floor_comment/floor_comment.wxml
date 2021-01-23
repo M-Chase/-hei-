@@ -1,5 +1,8 @@
 <!--pages/floor_comment/floor_comment.wxml-->
-
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view  style='margin-top: {{height}}px'>
+  
 <view class="message">
   <view wx:for = "{{floor_comment}}"  wx:for-index="f_ind" wx:for-item="f_item" >
           <view bindtap = 'personal_info'></view>
@@ -119,3 +122,4 @@
           </van-col>
       </view>
     </view>
+</view>

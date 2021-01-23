@@ -12,14 +12,21 @@ Page({
     scrollHeight: '100vh',
     lastID: '',
     other_info: { 'openid': 'osIqX5L0GcVzGmV8_HqQI6UbB9bo', 'nickname': '阿八' },//进来即获取的信息
-    websocketUrl: 'wss://www.yunluheis.cn:443/chat/',
-    baseUrl: 'https://www.yunluheis.cn:443/chat/',
+    websocketUrl: 'wss://www.yunluheishi.cn:443/chat/',
+    baseUrl: 'https://www.yunluheishi.cn:443/chat/',
     sender_ids: [],
     my_info: {},
     isme: false,
-    move: true,
+    //sendInfo: '',
     inputBottom: 0,
-    toView: ''
+    toView: '',
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '', //导航栏 中间的标题
+    },
+ 
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 20 
   },
 
   onLoad: function () {
@@ -30,8 +37,56 @@ Page({
       other_info: other_info
     })
     this.onload(other_info)
-
   },
+
+
+
+  sendMsg_auto:function(formdata){
+    if(this.data.other_info['openid'] == app.globalData.kf_openid){
+      var formdata = wx.getStorageSync('formdata')
+      if(formdata !== null){
+        console.log(formdata)
+        var that = this;
+        var messages = this.data.messages;
+       // var message = formdata.buysum+' '+formdata.address+' '+formdata.deliverytime;
+       if(/[\u4e2a]/gi.test(formdata.buysum)){
+        var message = `小hei，我要买 ${formdata.buysum}平安果，请在${formdata.deliverytime}给我送到${formdata.address}哦~`
+       }else{
+        var message = `小hei，我要买 ${formdata.buysum}个平安果，请在${formdata.deliverytime}给我送到${formdata.address}哦~`
+       }
+        
+        //  console.log("beforebeforebeforebeforebeforebefore")
+       // console.log(messages)
+       // console.log(message)
+        var message_time_isme = {}
+        var timestamp = parseInt(Date.parse(new Date()) / 1000)
+        message_time_isme['message'] = message
+        message_time_isme['time'] = util.formatDate(timestamp)
+        message_time_isme['isme'] = true
+  
+        if ((messages.length == 0) || (timestamp - messages[messages.length-1].timestamp > 60))
+          message_time_isme['view'] = true
+        else
+          message_time_isme['view'] = false
+
+        messages.push(message_time_isme);
+       // console.log(messages)
+        this.setData({ messages: messages,message: '', lastId: "msg" + (messages.length - 1)});
+        console.log(this.data.messages)
+  
+        wx.sendSocketMessage({
+           data: message,
+        })
+      //  this.data.message= ''
+      //  console.log("消息"+this.data.message)
+        wx.setStorageSync('formdata', null);
+      }
+      
+    
+    }
+    
+  },
+
 
   onload: function (other_info) {
     var that = this
@@ -51,8 +106,12 @@ Page({
     wx.setNavigationBarTitle({
       title: other_info.nickname,
     })
-
-
+    that.setData({
+      nvabarData: {
+        showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+        title: other_info.nickname //导航栏 中间的标题
+      }
+    })
     /**
      * 从数据库中找到前10条
      */
@@ -71,7 +130,7 @@ Page({
           message_time_isme['view'] = true
         else
           message_time_isme['view'] = false
-          console.log("openid:  "+openid) 
+        //  console.log("openid:  "+openid) 
         if(res[i].sender_id==openid)
           message_time_isme['isme'] = true
         else
@@ -79,7 +138,7 @@ Page({
         messages.push(message_time_isme);
       }
      // var scrollTop = (messages.length) * 100;
-      var windowHeight = that.data.scrollHeight;
+     // var windowHeight = that.data.scrollHeight;
      // if (scrollTop < windowHeight) {
       //  scrollTop = 0;
       //  move = !move;
@@ -134,9 +193,9 @@ Page({
         }
       });//func回调可以拿到服务器返回的数据
 
-
+     
+     //  that.sendMsg_auto()
     });
-
 
     wx.onSocketError(function (res) {
       console.log('信道连接失败，请检查！')
@@ -147,13 +206,16 @@ Page({
         duration: 2000
       })
     })
-
+    
   },
+
+
+ 
 
   clear_unread: function (sender_id, receiver_id)
   {
     var data = { sender_id: sender_id, receiver_id: receiver_id}
-    request.request('https://www.yunluheis.cn:443/chat/clear_unread', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/chat/clear_unread', 'GET', data).then(function (res) {
 
       // wx.getStorage({
       //   key: "userInfo",
@@ -179,7 +241,7 @@ Page({
 
    */
   onReady: function () {
-
+    console.log("onready");
   },
 
 
@@ -191,11 +253,9 @@ Page({
    */
 
   onShow: function () {
-
-
-
+    console.log("onshow");
+    app.globalData.near = false
   },
-
 
 
   /**
@@ -205,6 +265,8 @@ Page({
    */
 
   onHide: function () {
+    app.globalData.near = true
+    console.log('我藏起来了')
     wx.closeSocket({})
     if(app.globalData.isblack)
     {
@@ -220,6 +282,8 @@ Page({
 
    */
   onUnload: function() {
+    app.globalData.near = true
+    console.log("我要卸载了")
     wx.closeSocket({})
 
     if (app.globalData.isblack) {
@@ -303,6 +367,10 @@ Page({
     this.setData({
       lastId: 'msg'+ (this.data.messages.length - 1)
     })
+    /*
+    this.setData({
+      message: ''
+    })*/
 },
   /**
 
@@ -314,6 +382,7 @@ Page({
     // const value = e.detail.value;
     console.log(e)
     this.setData({ message: e.detail.value });
+    console.log(this.data.message)
   },
 
   /**
@@ -322,10 +391,11 @@ Page({
 
    */
   sendMsg: function (e) {
+    console.log(e)
     var that = this;
     var messages = this.data.messages;
     var message = this.data.message;
-    console.log("beforebeforebeforebeforebeforebefore")
+  //  console.log("beforebeforebeforebeforebeforebefore")
     console.log(message)
     if (message.replace(/\s+/g, '').length ==0) {
       return false;
@@ -343,27 +413,32 @@ Page({
       message_time_isme['view'] = false
 
     messages.push(message_time_isme);
+    console.log(messages)
     var height = messages.length * 100;
     var windowHeight = that.data.scrollHeight;
     if (windowHeight > height) {
       height = 0;
     }
     this.setData({ messages: messages, message: '', lastId: "msg" + (messages.length - 1)});
-    // this.data.messages = messages
+    this.data.messages = messages
     console.log("afterafterafterafterafterafter")
     console.log(this.data.message)
-
     wx.sendSocketMessage({
       data: message,
     })
-    this.data.message= ''
-
-
+   // socketMsgQueue.push(message)
+      this.data.message= ''
+      console.log("消息"+this.data.message)
   },
+/*
+  cleanInput: function() {
+    var setMessage = {
+        sendInfo: this.data.message
+    }
+    this.setData(setMessage)
+},
 
-
-
-
+*/
   recordVoice: function () {
 
 

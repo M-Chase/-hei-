@@ -1,4 +1,7 @@
-
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view style='margin-top: {{height}}px'>
+  
 <!--userinfo-border是显示所有消息的外框-->
 <view class='userinfo-border'>
 <van-row gutter="10"></van-row>
@@ -71,3 +74,5 @@
 
 
 
+
+</view>

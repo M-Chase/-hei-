@@ -1,0 +1,69 @@
+<!--pages/slient_details/slient_details.wxml-->
+<!--
+  <image src="../image/slient_details.jpg" class="img"></image>
+-->
+<form bindsubmit="">
+  <view class="out">
+    <view class="txt">
+      <input style="margin-left:42%;margin-top:11%;color:white;" placeholder="请输入购买数量"  placeholder-class="txt3"  bindchange="buysum" name="buysum"/>
+    
+    </view>
+    <view style="margin-top:4%;">
+      <input style="margin-left:42%;color:white;" placeholder="请输入收货地点"  placeholder-class="txt3"  bindchange="address"  name="address"/>
+    
+    </view>
+    <view style="margin-top:4%;">
+      <input style="margin-left:42%;color:white;" placeholder="请输入收货时间" placeholder-class="txt3"  bindchange="deliverytime"  name="deliverytime"/>
+    
+    </view>
+    <view style="clear:both"></view>
+    <button style="color:white;border:1px solid white;width:90px;font-size:21px;margin-top:18px;margin-left:21px;opacity:0;" size="mini" plain="true" form-type="submit" hover-class="none">提交</button>
+  </view>
+  </form>
+<!--
+<van-cell style="width:30%" bindtap='get_help' icon="smile-comment-o" is-link>
+  <view slot="title">
+    <view class="van-cell-history">联系我们</view>
+  </view>
+</van-cell>
+-->
+
+
+<view class="share_item">
+    <button style="color:#ffffffb0;border:0px;margin-left:0px;font-size:18px;"  size="mini" plain="true" bindtap='get_help'>
+    <van-row>
+      <van-col><van-icon class="smile-comment-o" name="smile-comment-o"/></van-col>
+      <van-col><view style="margin-left:1px">联系我们</view></van-col>
+    </van-row>
+
+  </button>
+  
+  <button style="color:#ffffffb0;border:0px;margin-right:0px;font-size:18px;"  size="mini" plain="true"  open-type="share">
+    <van-row>
+      <van-col><van-icon class="share" name="share"/></van-col>
+      <van-col><view>分享</view></van-col>
+      </van-row>
+  </button>
+</view>
+
+
+            
+<!--
+<action-sheet >
+          <action-sheet-item class="share_item">
+            <button style="color:white;border:1px solid white;"  size="mini" plain="true"  open-type="share">
+              <van-row>
+                <van-col><van-icon class="share" name="share"/></van-col>
+                
+                  <van-col><view>分享</view></van-col>
+                
+              </van-row>
+            </button>
+          </action-sheet-item>
+</action-sheet>
+-->
+
+
+  
+        
+  

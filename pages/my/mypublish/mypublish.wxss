@@ -1,3 +1,10 @@
+.home-page {
+  height: 160rpx;
+  width: 100%;
+  border: 0rpx solid red;
+  font-size: 60rpx;
+}
+
 /*顶部搜索框、消息滚动框、分类框*/
 .top{
   width:100%;

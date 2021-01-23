@@ -33,7 +33,7 @@ function save_userinfo()
         var data = {
           code: res.code,
         }
-          request('https://www.yunluheis.cn:443/wx_Code/getOpenId','GET',data = data).then(function (res) {
+          request('https://www.yunluheishi.cn:443/wx_Code/getOpenId','GET',data = data).then(function (res) {
           var openid = res
           wx.getUserInfo({
             success: res => {
@@ -45,7 +45,7 @@ function save_userinfo()
                 userUrl: userInfo['avatarUrl'],
                 openid: openid,
               }
-              request('https://www.yunluheis.cn:443/wx_Code/fresh', "GET", data)
+              request('https://www.yunluheishi.cn:443/wx_Code/fresh', "GET", data)
             }
           }
           )

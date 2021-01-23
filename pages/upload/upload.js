@@ -24,8 +24,16 @@ Page({
     price: '',
     price_warning: '',
     title: '',
-    pub_count:0
-
+    pub_count:0,
+    //cWidth: 0,
+    //cHeight : 0
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '发布', //导航栏 中间的标题
+    },
+ 
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 20 
   },
   //获取价格
   get_price: function (e) {
@@ -237,7 +245,7 @@ Page({
         console.log(formData)
   
         wx.uploadFile({
-          url: 'https://www.yunluheis.cn:443/wx_Code/publish',  //填写实际接口   
+          url: 'https://www.yunluheishi.cn:443/wx_Code/publish',  //填写实际接口   
           header: {
             "Content-Type": "application/json"
           },
@@ -288,7 +296,7 @@ Page({
     var that = this
     formData['imgUrl'] = imgUrl
     console.log(formData)
-    request.request('https://www.yunluheis.cn:443/wx_Code/uploadFile', 'POST', formData).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/wx_Code/uploadFile', 'POST', formData).then(function (res) {
       console.log('jjjjjjjjjjjjjjjjkkkkk')
       console.log(res)
       if (res['result'] == '1') {
@@ -346,8 +354,27 @@ Page({
           var size = res.tempFiles[0].size
           console.log("jjjjjjjjjjjjjjjj")
           console.log(size)
-		  that.compressImage(res.tempFilePaths,0, res.tempFiles.length)
-			
+   //   that.compressImage(res.tempFilePaths,0, res.tempFiles.length)
+      
+      if(size<=3000000) 
+      { 
+        that.setData({ 
+        //  img_arr: img_arr.concat(res.tempFilePaths), 
+            img_arr: img_arr.concat(res.tempFilePaths), 
+        }) 
+      } 
+      else 
+      { 
+        wx.showModal({ 
+          content: "上传图片不能大于3M!", 
+          showCancel: false, 
+        })  
+           
+         wx.showModal({ 
+           content: "上传图片不能大于3M!", 
+           showCancel: false, 
+         })  
+      }
           this.disabled_pub();
           this.data.pub_count = 0;
   
@@ -362,22 +389,34 @@ Page({
 		var img_arr = that.data.img_arr;
 		console.log("111")
 		if (nowNum<=endNum){
-			wx.compressImage({
-				src: imgUrls[nowNum],
-				quality: 60,
-				success: res => {
-					nowNum += 1;
-					console.log("压缩成功")
-					console.log(res)
-					img_arr.push(res.tempFilePath)
-					that.setData({
-						img_arr: img_arr,
-					})
-					that.compressImage(imgUrls, nowNum, endNum)
-					// return res.tempFilePath
-					// console.log(that.data.img_arr)
-				}
-			})
+      if(/\.gif/gi.test(imgUrls[nowNum])){
+        console.log("是我没错了~")
+        img_arr.push(imgUrls[nowNum])
+        nowNum += 1;
+        that.setData({
+          img_arr: img_arr,
+        })
+        that.compressImage(imgUrls, nowNum, endNum)
+      }else{
+        wx.compressImage({
+          src: imgUrls[nowNum],
+          quality: 60,
+          success: res => {
+            nowNum += 1;
+            console.log("压缩成功")
+            console.log(res)
+            img_arr.push(res.tempFilePath)
+            console.log(imgUrls)
+            that.setData({
+              img_arr: img_arr,
+            })
+            that.compressImage(imgUrls, nowNum, endNum)
+            // return res.tempFilePath
+            // console.log(that.data.img_arr)
+          }
+        })
+      }
+			//that.compressImage(imgUrls, nowNum, endNum)
 		}
 		
 	},
@@ -440,7 +479,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+   // app.globalData.near = false
   },
 
   /**
@@ -454,7 +493,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+   // app.globalData.near = true
   },
 
   /**

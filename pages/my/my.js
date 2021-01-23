@@ -17,6 +17,13 @@ Page({
     my_comment:[],
     nums_colpubcom:[],
     rank:3,
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '个人信息', //导航栏 中间的标题
+    },
+ 
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 20 
   },
   onChange(event) {
     this.setData({ active: event.detail });
@@ -64,6 +71,7 @@ Page({
   },
 
   onLoad: function (options) {
+    
     console.log(app.globalData.userInfo)
     this.setData({
       my_img: app.globalData.userInfo.avatarUrl,
@@ -72,7 +80,7 @@ Page({
     wx.setNavigationBarTitle({
       title: "个人信息",
     })
-
+    
   },
 
   /**
@@ -86,32 +94,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+   // app.globalData.near = false
     var data = {
       openid: app.globalData.openid
     }
     var that = this
-    request.request('https://www.yunluheis.cn:443/wx_Code/num_publishcommentcollect', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/wx_Code/num_publishcommentcollect', 'GET', data).then(function (res) {
       console.log("bbbbbbbbbbbbbbbbbbb")
       console.log(res)
       that.setData({ 
         nums_colpubcom: res
       })
     })
-
+    
   },
-
+  
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    //app.globalData.near = true
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    //app.globalData.near = true
   },
 
   /**

@@ -1,6 +1,12 @@
 /* pages/upload/upload.wxss */
+.home-page {
+  height: 100rpx;
+  width: 100%;
+  border: 0rpx solid red;
+  font-size: 60rpx;
+}
 .page{
- margin:0px 15px 0px 15px;
+ margin:22% 15px 0px 15px;
 }
 .upload-img-5{
   margin: 5px 0 90px 0;

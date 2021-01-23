@@ -1,4 +1,9 @@
 <!--pages/search_show/search_show.wxml-->
+
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view  style='margin-top: {{height}}px'>
+  
 <!--分割线-->
 <view class="divLine1"></view>
 
@@ -100,4 +105,5 @@
 <view wx:if="{{(search_info.length==0)&&ready}}" style="margin-top:200px;display:flex;flex-direction:row;justify-content:center;">
   <image src="../image/kong.gif" style="width:40px;height:40px;"></image>
   <view style="margin-left:5px;display:flex;align-items:center;">暂时未搜索到相关内容哦~</view>     
+</view>
 </view>

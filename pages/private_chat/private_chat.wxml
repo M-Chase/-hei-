@@ -1,6 +1,8 @@
 <!--聊天对象-->
-
-
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view style='margin-top: {{height}}px'>
+  
 <scroll-view class='chatPage' scroll-y style='height:{{scrollHeight}};'
      scroll-into-view="{{lastId}}">
   <view style="padding-bottom:25px;"> 
@@ -41,9 +43,12 @@
 <view class='messageInfo' style='bottom:{{inputBottom}}'> 
   <image src='../image/keyboard.png' class='icon' hidden='{{flag}}'></image>
    <!--<image src='../image/voice.jpg' class='icon' hidden='{{!flag}}' bindtap='changeShowStatus'></image>-->
-  <input class='msg-input' bindfocus='changeScrollvalue' bindblur="blur" bindinput='onInput'
-  value='{{message}}' show-confirm-bar = "{{false}}" cursor-spacing='17px' adjust-position="{{false}}"></input>
-  <button bindtap = 'sendMsg'  type="primary" size="mini" style="background:black;font-size:25rpx;z-index:4;height:50rpx;width:100rpx;margin-right: 15px;margin-left: 5px;">发送</button>
+  <textarea class='msg-input' show-confirm-bar="{{false}}"  bindfocus='changeScrollvalue' bindblur="blur" bindinput='onInput'
+  value='{{message}}' cursor-spacing='17px' adjust-position="{{false}}"></textarea>
+  <button bindtap = 'sendMsg' type="primary" size="mini" style="background:black;font-size:25rpx;z-index:4;height:50rpx;width:100rpx;margin-right: 15px;margin-left: 5px;">发送</button>
   <!--<button hidden='{{!flag}}' class='msg-input' bindtap='recordVoice'>按住录音</button>-->
   <!--<image src='../image/plus.png' class='icon' bindtap='uploadimage'></image>-->
 </view>
+
+</view>
+

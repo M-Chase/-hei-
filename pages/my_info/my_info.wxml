@@ -1,5 +1,8 @@
 <!--pages/my_info/my_info.wxml-->
-
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view  style='margin-top: {{height}}px'>
+  
 <van-tabs active="{{ active }}" bind:change="onChange" >
   <!--私信页面-->
   <van-tab title="私信">
@@ -66,3 +69,4 @@
   </van-tab>
 
 </van-tabs>
+</view>

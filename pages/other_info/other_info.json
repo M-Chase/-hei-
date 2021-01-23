@@ -14,6 +14,7 @@
     "van-tabbar": "/miniprogram_npm/vant-weapp/tabbar/index",
     "van-tabbar-item": "/miniprogram_npm/vant-weapp/tabbar-item/index",
     "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index",
-    "van-tag": "/miniprogram_npm/vant-weapp/tag/index"
+    "van-tag": "/miniprogram_npm/vant-weapp/tag/index",
+    "nav-bar": "/pages/navbarData/navbarData"
   }
 }

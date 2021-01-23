@@ -12,7 +12,14 @@ Page({
     mypublish_info: [],
     select: false,
     tihuoWay: '默认排序',
-    ready:false
+    ready:false,
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '我的发布', //导航栏 中间的标题
+    },
+ 
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 20
     },
   bindShow() {
     this.setData({
@@ -65,9 +72,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    app.globalData.near = false
     var data = { openid: app.globalData.openid }
     var that = this
-    request.request('https://www.yunluheis.cn:443/wx_Code/mypublish', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/wx_Code/mypublish', 'GET', data).then(function (res) {
       console.log(res)
       var mypublish_info = res
       for (var i = 0; i < mypublish_info.length; i++) {
@@ -208,7 +216,7 @@ Page({
           mypublish_info.splice(id, 1)
           that.setData({ mypublish_info: mypublish_info })
 
-          request.request('https://www.yunluheis.cn:443/wx_Code/delete_product', 'GET', data).then(function (res) {
+          request.request('https://www.yunluheishi.cn:443/wx_Code/delete_product', 'GET', data).then(function (res) {
           })
           wx.getStorage({
             key: "publish_info",
@@ -242,7 +250,7 @@ Page({
 
         var data = { product_id: product_id, state: state }
         if (res.confirm) {          
-          request.request('https://www.yunluheis.cn:443/wx_Code/update_productState', 'GET', data).then(function (res) {
+          request.request('https://www.yunluheishi.cn:443/wx_Code/updateProductState', 'GET', data).then(function (res) {
             wx.showToast({
               title: title,
               duration: 3000
@@ -264,14 +272,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    app.globalData.near = true
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.globalData.near = true
   },
 
   /**

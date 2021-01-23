@@ -1,4 +1,5 @@
 {
+  "navigationStyle": "custom",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "van-button": "/miniprogram_npm/vant-weapp/button/index",
@@ -14,6 +15,7 @@
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
     "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index",
 
-    "van-tag": "/miniprogram_npm/vant-weapp/tag/index"
+    "van-tag": "/miniprogram_npm/vant-weapp/tag/index",
+    "nav-bar": "/pages/navbarData/navbarData"
   }
 }

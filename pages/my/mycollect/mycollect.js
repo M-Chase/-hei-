@@ -13,7 +13,15 @@ Page({
     publish_info: [],
     select: false,
     tihuoWay: '默认排序',
-    ready:false
+    ready:false,
+    // 组件所需的参数
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '我的收藏', //导航栏 中间的标题
+    },
+ 
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 20
   },
   bindShow() {
     this.setData({
@@ -73,10 +81,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    app.globalData.near = false
     // this.onshow()
     var that = this
     var data = { openid: app.globalData.openid }
-    request.request('https://www.yunluheis.cn:443/wx_Code/mycollect', 'GET', data).then(function (res) {
+    request.request('https://www.yunluheishi.cn:443/wx_Code/mycollect', 'GET', data).then(function (res) {
       console.log(res)
       var collect = []
 
@@ -211,7 +220,7 @@ Page({
             star: 0,
             openid: app.globalData.openid
           };
-          request.request('https://www.yunluheis.cn:443/wx_Code/collect', 'GET', data).then(function(){
+          request.request('https://www.yunluheishi.cn:443/wx_Code/collect', 'GET', data).then(function(){
 
             var p = app.globalData.star_ids.indexOf(collect[id].id)
             app.globalData.star_ids.splice(p,1)
@@ -251,14 +260,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    app.globalData.near = true
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.globalData.near = true
   },
 
   /**

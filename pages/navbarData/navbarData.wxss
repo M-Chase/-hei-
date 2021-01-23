@@ -1,0 +1,67 @@
+/* pages/navbarData.wxss */
+/* components/navbar/index.wxss */
+.nav-wrap {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: #000;
+  color: #fff;
+  z-index: 9999999;
+}
+/* 标题要居中 */
+.nav-title {
+  position: absolute;
+  text-align: center;
+  max-width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 36rpx;
+  color:  #fff;
+  font-weight: 70;
+}
+ 
+.nav-capsule {
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+  width: 183rpx;
+  justify-content: space-between;
+  height: 100%;
+}
+ 
+.nav-border {
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  padding-top: 2px;
+  border:1px solid rgb(58, 55, 55);
+  width:100%;
+  height:26px;
+  border-radius:1000rpx;
+}
+
+.navbar-v-line {
+  width: 0.8px;
+  height: 35rpx;
+  margin-left: 8px;
+  margin-right: 8px;
+  background-color: rgb(58, 55, 55);
+}
+ 
+.back-pre, .back-home {
+  width: 26rpx;
+  height: 30rpx;
+  margin-top: 4rpx;
+  padding: 5rpx;
+}
+.nav-capsule .back-home {
+  width: 36rpx;
+  height: 40rpx;
+  margin-top: 3rpx;
+}

@@ -1,5 +1,9 @@
 <!--pages/my_info/system_notice/system_notice'.wxml-->
 
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view class='home-page' style='margin-top: {{height}}px'>
+  
 <view wx:for="{{notices['system']}}" id="{{index}}">
   <view class="message">
     <van-row>
@@ -14,4 +18,5 @@
     </van-row>
   </view>
   <view class="divLine"></view>
+</view>
 </view>

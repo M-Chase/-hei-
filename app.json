@@ -15,15 +15,17 @@
     "pages/my/myrank/myrank",
     "pages/search_show/search_show",
     "pages/my_info/reply_notice/reply_notice",
-    "pages/my_info/system_notice/system_notice"
-
+    "pages/my_info/system_notice/system_notice",
+    "pages/slient_details/slient_details"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "云麓hei市",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
+
 }

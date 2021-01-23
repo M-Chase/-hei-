@@ -1,3 +1,9 @@
+.home-page {
+  height: 160rpx;
+  width: 100%;
+  border: 0rpx solid red;
+  font-size: 60rpx;
+}
 .top{
   width:100%;
   position:fixed;
