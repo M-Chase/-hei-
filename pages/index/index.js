@@ -6,6 +6,7 @@ var util = require("../../utils/util.js")
  
 Page({
   data: {
+    treat_server: "none",
     publish_info:[],//所有的发布信息
     canIUse: false,//判断用户是否授权
     publish_info_my:0,//发布，消息，我的，分别对应0，1，2
@@ -18,7 +19,7 @@ Page({
     img_height: 400,
     tmp:0,
     imgSrc:"../image/slient_night2.jpg",
-    imgSrc1:"",
+    imgSrc1:"../image/history.jpg",
     // 组件所需的参数
     nvabarData: {
       showCapsule: 0, //是否显示左上角图标   1表示显示    0表示不显示
@@ -26,7 +27,41 @@ Page({
     },
    
     // 此页面 页面内容距最顶部的距离
-    height: app.globalData.height * 2 + 20
+    height: app.globalData.height * 2 + 20,
+
+
+      value1: undefined,
+      value2: '',
+      option1: [
+        { text: '全部商品', value: '全部' },
+        { text: '出售', value: '出售' },
+        { text: '求购', value: '求购' },
+      ],
+      option2: [
+        { text: '全部信息', value: 'a' },
+        { text: '失物招领', value: 'b' },
+        { text: '信息交流', value: 'c' },
+      ],
+      option3: [
+        { text: '全部商品',value: 3},
+        { text: '出售',value: 4},
+        { text: '求购',value: 5},
+      ],
+      option4: [
+        { text: '全部信息 ', value: 'd'},
+        { text: '失物招领 ', value: 'e'},
+        { text: '信息交流 ', value: 'f'},
+      ],
+      first: false,
+      left: 6.5,
+     // history_info: [
+     //   {title:'收到货公交卡还是该接口还是框架和高科技上过课世界观和思考'},
+     //   {title:'还是客家话关键时刻火锅鸡收购价开始高考结束高考结束贵阳嘎与人工费怀'}
+    //  ]
+      history_info: [],
+      title1: '',
+      title2: ''
+   
   },
   onChange(event) {
     this.setData({ active: event.detail });
@@ -72,18 +107,19 @@ slient_details:function(){
   request.request('https://www.yunluheishi.cn:443/wx_Code/updateFestivalClicks', 'GET', data).then(function (res) {
     console.log("bbbbbbbbbbbbbbbbbbb")
     console.log(res)
-    
   })
-  /*
+  
    wx.navigateTo({
           url: '../slient_details/slient_details'
-   })*/
+   })
 },
   //点击发布/求购执行的函数
   publish_purchase:function(event) {
     if(event.detail=='0')
     {
       this.to_otherpage('../upload/upload')
+    //  this.to_otherpage('../upload_server/upload_server')
+    //this.to_otherpage('../publish_category/publish_category')
 
     }
     else if(event.detail=='1')
@@ -206,7 +242,7 @@ slient_details:function(){
       },
     })
     this.get_publishinfo1()
-
+    //this.get_history()
 
   },
 
@@ -216,10 +252,30 @@ slient_details:function(){
     this.get_publishinfo()
     this.setData({ keyword:''})
     // this.get_publishinfo()
-    
+   // this.get_history()
+   this.setData({
+     history_info : app.globalData.history_info
+   })
+   console.log(this.data.history_info)
+   var data = {}
+   var that = this
+    request.request('https://www.yunluheishi.cn/history', 'GET', data).then(function (res) {
+      that.setData({
+        title1: res.data[0].title,
+        title2: res.data[1].title
+      })
+    })
+   
   },
 
-
+  // 获取历史消息
+  get_history:function(){
+    var data = {}
+    request.request('https://www.yunluheishi.cn/history', 'GET', data).then(function (res) {
+      console.log(res)
+      app.globalData.history_info = res.data
+    })
+  },
 
     //获取发布信息
   get_publishinfo:function()
@@ -251,6 +307,7 @@ slient_details:function(){
     var that = this
     var data = { 'all_sell_buy': '全部' }
     request.request('https://www.yunluheishi.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
+      console.log(res)
       var publish_info = res['publish']
       wx.setStorage({
         key: "publish_info",
@@ -329,6 +386,7 @@ slient_details:function(){
     var data = { 'all_sell_buy': sellbuy }
     var that = this
     request.request('https://www.yunluheishi.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
+      console.log(res)
       var publish_info = util.span_time(res['publish'])
       that.setData({ 'publish_info': publish_info })
       if (data['all_sell_buy'] == '全部') {
@@ -384,6 +442,7 @@ slient_details:function(){
   {
     this.setData({keyword:e.detail})
   },
+
 get_titletext:function()
 {
   var that = this
@@ -402,7 +461,131 @@ get_titletext:function()
       desc: '云麓hei市',
       path: '/pages/index/index' // 路径，传递参数到指定页面。
     }
+  },
+
+  // 导航栏二级菜单部分
+  all_messages: function () {
+    this.setData({
+      treat_server: 'none',
+      left: 6.5
+    })
+    var data = { 'all_sell_buy': '全部' }
+    var that = this
+    request.request('https://www.yunluheishi.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
+      console.log(res)
+      var publish_info = util.span_time(res['publish'])
+      that.setData({ 'publish_info': publish_info })
+      /*
+      if (data['all_sell_buy'] == '全部') {
+        app.globalData.id_pos = res['id_pos']
+        wx.setStorage({
+          key: "publish_info",
+          data: res['publish']
+        })
+        // 隐藏加载框
+      }*/
+    })
+  },
+
+  valueChange: function (e){
+    console.log(e)
+  //  console.log(typeof(e.detail))
+    if(e.currentTarget.id == 'treat'){
+      
+      this.setData({
+        
+        option2: [
+          { text: '全部信息'},
+          { text: '失物招领'},
+          { text: '信息交流'},
+        ]
+      })
+    }else{
+      this.setData({
+        option1: [
+          { text: '全部商品'},
+          { text: '出售'},
+          { text: '求购'},
+        ],
+        option1: [
+          { text: '全部商品', value: 0 },
+          { text: '出售', value: 1 },
+          { text: '求购', value: 2 },
+        ],
+      })
+    }
+    
+  },
+  valueChange1: function (e){
+    console.log(e)
+    var temp = e.detail
+    if(e.detail == 3){
+      temp = '全部'
+    }else if(temp == 4){
+      temp = '出售'
+    }else if(temp == 5){
+      temp = '求购'
+    }
+
+    this.treat_refresh(temp)
+
+    this.setData({
+      treat_server: 'treat',
+      left: 40
+    })
+    if(e.detail==3){
+      this.setData({
+        value1 : '全部'
+      })
+    }else if(e.detail==4){
+      this.setData({
+        value1 : '出售'
+      })
+    }else if(e.detail==5){
+      this.setData({
+        value1 : '求购'
+      })
+    }
+  },
+  valueChange2: function (e){
+    console.log(e)
+    this.setData({
+      treat_server: 'server',
+      left: 75
+    })
+    if(e.detail=='d'){
+      this.setData({
+        value2 : 'a'
+      })
+    }else if(e.detail=='e'){
+      this.setData({
+        value2 : 'b'
+      })
+    }else if(e.detail=='f'){
+      this.setData({
+        value2 : 'c'
+      })
+    }
+    
+   // this.data.value2 = 'a'
+  },
+
+  treat_refresh:function(sellbuy)
+  {
+    var data = { 'all_sell_buy': sellbuy }
+    var that = this
+    request.request('https://www.yunluheishi.cn:443/wx_Code/agian', 'POST', data).then(function (res) {
+      console.log(res)
+      var publish_info = util.span_time(res['publish'])
+      that.setData({ 'publish_info': publish_info })
+      if (data['all_sell_buy'] == '全部') {
+        app.globalData.id_pos = res['id_pos']
+        wx.setStorage({
+          key: "publish_info",
+          data: res['publish']
+        })
+        // 隐藏加载框
+      }
+    })
   }
-
-
 })

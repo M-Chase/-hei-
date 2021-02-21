@@ -1,0 +1,25 @@
+<!--pages/publish_category/publish_category.wxml-->
+
+<!--
+<text>ahyrharhth</text>
+-->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ <text>shugisuhiu</text>
+<view  style='margin-top: {{height}}px'>
+  <view class="loading1">
+    <text></text>
+    <text></text>
+    <text></text>
+    <text></text>
+    <text></text>
+  </view>
+    <view style="display:inline-block">选择你想发布的类别吧~</view>
+    <view class="loading1">
+    <text></text>
+    <text></text>
+    <text></text>
+    <text></text>
+    <text></text>
+  </view>
+  
+</view>

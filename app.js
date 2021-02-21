@@ -102,7 +102,19 @@ App({
       this.globalData.height = res.statusBarHeight
     }
   })
+
+  this.get_history()
  },
+ // 获取历史消息
+ get_history:function(){
+  var data = {}
+  var that = this
+  request.request('https://www.yunluheishi.cn/history', 'GET', data).then(function (res) {
+    console.log(res)
+    that.globalData.history_info = res.data
+  }
+  )
+},
 publish_collectid:function(openid)
 {
   var that = this
@@ -262,6 +274,8 @@ get_systemInfo: function ()
     share: false,  // 分享默认为false
     height: 0,
     near: true,
-    canIUse: false
+    canIUse: false,
+    //second: false
+    history_info: []
   }
 })

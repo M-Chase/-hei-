@@ -31,8 +31,17 @@
         <van-search value="{{keyword}}" shape="round" background="rgba(255,255,255,1)" placeholder="请输入关键字" use-action-slot bind:change="keyword" class="search">
           <view slot="action"  bindtap = 'onSearch' style="padding-left:10px;padding-right:10px;background-color:black;border-radius: 15%;color:white;font-size:14px;">搜索</view>   
         </van-search>
-        <view bindtap="slient_details">
-          <image style="width:100%;height:74%;position:absolute;top:114rpx" src = "{{imgSrc1}}" mode='scaleToFill' ></image>      
+        <view bindtap="slient_details" class="pic" >
+          <!--
+          <image style="width:100%;height:74%;position:absolute;top:114rpx" src = "{{imgSrc1}}" mode='scaleToFill' >
+            <text>tejujeyjedjgjjhgj</text>
+          </image>     
+          -->
+          <view style="margin-top:26%;width:80%;">
+            <view class="text_set">1、{{title1}}</view>
+            <view class="text_set">2、{{title2}}</view>
+            <view style="color:rgb(221, 214, 214);height:1px;border:0px solid white;line-height:1px;">......</view>
+          </view>
         </view>
         </view>
       </view>
@@ -47,14 +56,25 @@
         
       
       <!--全部，发布，求购标题行-->
-      <van-tabs  bind:change = 'all_sell_buy' id = 'van-tabs'>
+      
+      <van-tabs  bind:change = 'all_sell_buy' id = 'van-tabs' >
         <van-tab title="全部" name="a" ></van-tab>
-        <van-tab title="出售" name="b"></van-tab>
+        <van-tab title="出售" name="b" ></van-tab>
         <van-tab title="求购" name="c"></van-tab>
       </van-tabs>
-     
-    </view>
-
+     <!--
+       
+ <view style="display:flex">
+<button style="display:inline-block;width:30%;height:50px;background-color:white;border-radius:0;padding-top:16px;font-size:15px;color:#000000;font-weight:500;" bindtap="all_messages">全部</button>
+      <van-dropdown-menu style="display:inline-block;width:70%;margin-top:0px;" >
+        <van-dropdown-item id="treat"  title="交易" value="{{value1}}" options="{{treat_server=='treat' ? option1 : option3}}" bind:change="valueChange1" />
+        <van-dropdown-item id="server" title="服务" value="{{value2}}" options="{{treat_server=='server' ? option2 : option4}}" bind:change="valueChange2"/>
+      </van-dropdown-menu>
+      <view class='b' style="left:{{left}}%"></view>
+    </view>  
+     -->
+   </view>
+ 
 
     <!--message代表信息栏-->
     <view class="{{imgSrc1 ? 'frame' : 'frame2'}}">
@@ -99,7 +119,7 @@
         </van-col>
 
         <!--userinfo-class代表出售or求购-->   
-        <van-col span="5">
+        <van-col wx:if="{{item.buy_sell}}" span="5">
           <view class='userinfo-class' wx:if="{{item.buy_sell=='出售'}}">
             <van-tag color="#FF8C00" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
           </view>
@@ -107,6 +127,13 @@
             <van-tag color="#20B2AA" text-color="#FDF5E6">{{item.buy_sell}}</van-tag>
           </view>
         </van-col>
+        <!--失物招领or信息交流-->
+        <van-col wx:if="{{item.lostOrFound}}" span="5">
+          <view class='userinfo-class'>
+            <van-tag color="#20B2AA" text-color="#FDF5E6">失物招领</van-tag>
+          </view>
+        </van-col>
+
       </view></van-row>
 
       <van-row gutter="10">
@@ -118,11 +145,16 @@
           <van-row gutter="10"><view class='userinfo-description'>{{item.title}}</view></van-row>
           
         <!--desc代表发布的详情--> 
-          <van-row gutter="10"><view class='desc'>{{item.description}}</view></van-row>
+        <van-row wx:if="{{item.buy_sell}}" gutter="10"><view class='desc'>{{item.description}}</view></van-row>
+        
+        <!--失物招领内容格式-->
+        <van-row wx:if="{{item.lostOrFound}}" gutter="10"><view class='desc'>我于{{item.lost_date_time}}在{{item.pos}}{{lostOrFound ? '捡到' : '遗失'}}{{title}},它的信息有：{{item.description}}</view></van-row>
 
         <!--userinfo-price代表发布的价格-->
-          <van-row gutter="10"><view class='userinfo-price'>¥{{item.price}}</view></van-row>
+          <van-row wx:if="{{item.price}}" gutter="10"><view class='userinfo-price'>¥{{item.price}}</view></van-row>
 
+        <!--失物招领-->
+          <van-row wx:if="{{item.lostOrFound}}" gutter="10"><view class='userinfo-price'>¥{{item.lostOrFound}}</view></van-row>
       
         <!--message-info代表评论数，收藏量，浏览量的板块-->
         <van-row gutter="10" style="padding-top:10px;">
@@ -161,7 +193,6 @@
     </van-row>
 
         </view>
-
         <!--分割线-->
         <view class="divLine1"></view>
       </view>

@@ -12,12 +12,12 @@
       <view class="picker_comment1">
         <view class="attr_value1">
           <radio  value='出售' checked='出售'>
-            <label class='radio_label1'>我要出售</label>
+            <label class='radio_label1'>失物招领</label>
           </radio>
         </view>
         <view class="attr_value1">
           <radio  value='求购'>
-            <label class='radio_label1'>我要求购</label>
+            <label class='radio_label1'>信息交流</label>
           </radio>
         </view>
       </view>
@@ -64,13 +64,26 @@
 <!--/*********发布类别和物品类别栏***********/-->
 
 <!--/*********发布与输入栏***********/-->
-  <textarea class='heading'  maxlength="12" placeholder="加个标题呦~（必填，少于12字）" bindinput ="get_title" value = '{{title}}' auto-height/>
+
+  <textarea class='heading'  maxlength="12" placeholder="你丢了/捡到什么物品了呢~" bindinput ="get_title" value = '{{title}}' auto-height/>
   <view class="divLine1"></view>
-  <textarea class='text' maxlength="200" placeholder="描述一下要发布的内容吧~（少于200字）" bindinput = 'get_describe'/>
-  <van-row class='price'>
+  <textarea class='heading' maxlength="12" placeholder="丢失/捡到的时间" bindinput = 'get_time' value = '{{time}}' auto-height/>
+  <view class="divLine1"></view>
+  <textarea class='heading' maxlength="12" placeholder="丢失/捡到的地点" bindinput = 'get_pos' value = '{{position}}' auto-height/>
+  <view class="divLine1"></view>
+  <textarea class='text' maxlength="200" placeholder="描述一下物品的情况吧~（少于200字）" bindinput = 'get_describe'/>
+  <!--
+    <van-row class='price'>
     <van-col><view style="color:red">￥</view></van-col>
     <van-col><input style="height:100%;" type='digit' maxlength="9" value ='{{price}}' placeholder="0.00" bindinput='get_price'/></van-col>
   </van-row>
+  -->
+  <view>
+    <view class="main-title">{{type ? '失物' : '招领'}}</view>
+    <view style="display:inline-block;margin-left:3px;border:0px solid red;">
+      <switch style="zoom:.7;" checked="{{type}}" bindchange="changeSwitch"/>
+    </view>
+  </view>
 <!--/*********page结束***********/-->
 </view>
 <!--/*********发布与输入栏***********/-->
@@ -79,7 +92,7 @@
 <form bindsubmit="formSubmit" bindreset="formReset">  
   <view style='position: fixed; width: 100%;'>
     <view class='addImv'>   
-      <view wx:for="{{img_arr}}" wx:key="index" class='upFile' bindtap="previewImg" data-imgid="{{index}}" >                       
+      <view wx:for="{{img_url}}" wx:key="index" class='upFile' bindtap="previewImg" data-imgid="{{index}}" >                       
         <image class='itemImv' mode='aspectFill' src='{{item}}' data-index="{{index}}" bindlongpress="deleteImg" name="headimage" webp="true"></image> 
         <view class="closeImv" catchtap="deleteImg" data-index="{{index}}"><van-icon name="cross"/></view>
       </view>      
@@ -94,7 +107,7 @@
 <canvas canvas-id="canvas" style="width:{{cWidth}}px;height:{{cHeight}}px;position: absolute;left:-1000px;top:-1000px;"></canvas>
 -->
 <!--
-<van-tabbar value="{{ publish_info_my }}" bind:change="publish_purchase">
+  <van-tabbar value="{{ publish_info_my }}" bind:change="publish_purchase">
       <van-tabbar-item icon="home-o" >商品交易</van-tabbar-item>
       <van-tabbar-item icon="setting-o" info="">生活服务</van-tabbar-item>
 </van-tabbar>

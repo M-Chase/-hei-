@@ -1,0 +1,35 @@
+/* pages/history_detail/history_detail.wxss */
+.time{
+  font-size: 13px;
+  font-weight: bold;
+  color: rgb(79, 79, 180);
+  margin: 2px 0 12px 5px;
+}
+.title{
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  color: red;
+  font-weight: bold;
+}
+/*内部分割线样式*/
+.divLine1{ 
+  background: #E0E3DA;
+  height:2px;
+  margin:0 0 7px 0;
+}
+
+.content{
+  margin: 0 5px;
+  font-size: 14px;
+}
+
+.title{
+  display:inline-block;
+  width:100%;
+  border:0px solid black;
+  color: red;
+  font-size: 16px;
+  padding:2px 4px;
+  background-color: white;
+}

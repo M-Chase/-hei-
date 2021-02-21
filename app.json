@@ -16,7 +16,10 @@
     "pages/search_show/search_show",
     "pages/my_info/reply_notice/reply_notice",
     "pages/my_info/system_notice/system_notice",
-    "pages/slient_details/slient_details"
+    "pages/slient_details/slient_details",
+    "pages/publish_category/publish_category",
+    "pages/upload_server/upload_server",
+    "pages/history_detail/history_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,5 +30,4 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
-
 }

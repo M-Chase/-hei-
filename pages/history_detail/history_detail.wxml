@@ -1,0 +1,18 @@
+<!--pages/history_detail/history_detail.wxml-->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+ 
+<view  style='margin-top: {{height}}px'>
+  <view class="time">{{history_info.year}}年{{history_info.month}}月{{history_info.day}}日</view>
+  <!--
+    <view class="title">{{history_info.title}}</view>
+  -->
+  <button style="display:inline-block;width:100%;color: red;font-size: 16px;padding:2px 4px;background-color: white;">{{title}}</button>
+  <!--分割线-->
+  <view class="divLine1"></view>
+  <!--
+    <view class="content">{{history_info.content}}</view>
+  -->
+  <view>
+  <rich-text nodes="{{content}}"></rich-text>  
+</view>
+</view>

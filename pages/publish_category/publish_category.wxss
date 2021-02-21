@@ -1,0 +1,54 @@
+/* pages/publish_category/publish_category.wxss */
+.loading1{
+  display: inline-block;
+  width:50px;
+  height:40px;
+  margin-top: 30px;
+  margin-left: 20px;
+  text-align:center;
+}
+.loading1 text{
+  width:4px;
+  margin: 0 0.5px;
+  height:100%;
+  display:inline-block;
+  background:#67CF22;
+  animation: mymove 1.2s infinite ease-in-out;
+  -webkit-animation:mymove 1.2s infinite ease-in-out;
+   /*  
+      mymove代表动画名字
+      1.2s代表执行时间
+      infinite表示一直循环执行
+      ease-in-out表示先慢后快的缓动
+  */
+}
+.loading1 >text:nth-child(2){
+  -webkit-animation-delay:-1.0s;
+  animation-delay:-1.0s;
+}
+.loading1 >text:nth-child(3){
+  -webkit-animation-delay:-0.9s;
+  animation-delay:-0.9s;
+}
+.loading1 >text:nth-child(4){
+  -webkit-animation-delay:-0.8s;
+  animation-delay:-0.8s;
+}
+.loading1 >text:nth-child(5){
+ -webkit-animation-delay:-0.7s;
+  animation-delay:-0.7s;
+}
+@keyframes mymove{
+  0%{transform:scaleY(0.4);}
+  25%{transform:scaleY(1.0);}
+  50%{transform:scaleY(0.4);}
+  75%{transform:scaleY(0.4);}
+  100%{transform:scaleY(0.4);}
+}
+@-webkit-keyframes mymove{
+  0%{transform:scaleY(0.4);}
+  25%{transform:scaleY(1.0);}
+  50%{transform:scaleY(0.4);}
+  75%{transform:scaleY(0.4);}
+  100%{transform:scaleY(0.4);}
+} 
