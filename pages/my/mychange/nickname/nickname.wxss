@@ -1,0 +1,6 @@
+/* pages/my/mychange/nickname/nickname.wxss */
+.container{
+  margin-top: 25rpx;
+  display: flex;
+  flex-direction: column;
+}

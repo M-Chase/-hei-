@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "nav-bar": "/pages/navbarData/navbarData",
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-field": "/miniprogram_npm/vant-weapp/field/index"
+  }
+}

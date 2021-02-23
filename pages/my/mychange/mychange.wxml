@@ -1,0 +1,66 @@
+<!--pages/my/mychange/mychange.wxml-->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view style='margin-top: {{height}}px'>
+  <van-cell bindtap='navtoImg' is-link>
+    <view slot="title">
+      <text>头像</text>
+      <image src="{{userInfo.image}}" class="avatar"></image>
+    </view>
+  </van-cell>
+  <van-cell bindtap='navtoNickname' is-link>
+    <view slot="title">
+      <!-- <view class="van-cell-history">昵称</view> -->
+      <text>昵称</text>
+      <text class="text-right" wx:if="{{userInfo.nickname!=null}}">{{userInfo.nickname}}</text>
+    </view>
+  </van-cell>
+  <van-cell bindtap='navtoSchool' is-link>
+    <view slot="title">
+      <text>学校</text>
+      <text class="text-right">{{userInfo.school}}</text>
+    </view>
+  </van-cell>
+  <van-cell bindtap='navtoInsti' is-link>
+    <view slot="title">
+      <text>学院</text>
+      <!-- <view class="van-cell-history">学院</view> -->
+      <text wx:if="{{userInfo.college!=null}}" class="text-right"> {{userInfo.college}}</text>
+    </view>
+  </van-cell>
+  <van-cell bindtap='navtoNumber' is-link>
+    <view slot="title">
+      <text>学号</text>
+      <!-- <view class="van-cell-history">学号</view> -->
+      <text wx:if="{{userInfo.student_number!=null}}" class="text-right">{{userInfo.student_number}}</text>
+    </view>
+  </van-cell>
+  <van-cell bindtap='navtoGender' is-link>
+    <view slot="title">
+      <text>性别</text>
+      <!-- <view class="van-cell-history">性别</view> -->
+      <text wx:if="{{userInfo.sex==1}}" class="text-right">男</text>
+      <text wx:if="{{userInfo.sex==0}}" class="text-right">女</text>
+    </view>
+  </van-cell>
+  <van-cell bindtap='navtoPhone' is-link>
+    <view slot="title">
+      <text>手机号</text>
+      <!-- <view class="van-cell-history">手机号</view> -->
+      <text wx:if="{{userInfo.phone!=null}}" class="text-right">{{userInfo.phone}}</text>
+    </view>
+  </van-cell>
+  <van-cell bindtap='navtoPlace' is-link>
+    <view slot="title">
+      <text>收货地址</text>
+      <!-- <view class="van-cell-history">收货地址</view> -->
+      <!-- <text wx:if="{{userInfo.goods_address!=null}}">{{userInfo.goods_address}}</text> -->
+    </view>
+  </van-cell>
+  <van-cell bindtap='navtoInfo' is-link>
+    <view slot="title">
+      <text>个人简介</text>
+      <!-- <view class="van-cell-history">个人简介</view> -->
+      <!-- <text wx:if="{{userInfo.introduction!=null}}">{{userInfo.introduction}}</text> -->
+    </view>
+  </van-cell>
+</view>

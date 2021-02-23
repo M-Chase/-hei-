@@ -1,0 +1,5 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view style='margin-top: {{height}}px'>
+  <van-field model:value="{{newSchool}}" label="学校" type="textarea" placeholder="请输入新学校" autosize border="{{ false }}" bind:change="onChange" />
+  <button bindtap="changeSchool" plain="true" type="primary" class="btn">提交更改</button>
+</view>

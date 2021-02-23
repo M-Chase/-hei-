@@ -1,0 +1,13 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view style='margin-top: {{height}}px'>
+<van-cell-group title="原来简介">
+<van-cell label="{{introduction}}"><text></text></van-cell>
+</van-cell-group>
+<form bindsubmit="submit">
+<van-cell-group title="新简介">
+<textarea class="new-summary" name="introduction"></textarea>
+</van-cell-group>
+<button  plain="true" type="primary" class="btn" form-type="submit">提交修改</button>
+</form>
+
+</view>

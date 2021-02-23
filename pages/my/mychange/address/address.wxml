@@ -1,0 +1,12 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view style='margin-top: {{height}}px'>
+<van-cell-group title="原来地址">
+<van-cell label="{{address}}"><text></text></van-cell>
+</van-cell-group>
+<form bindsubmit="submit">
+<van-cell-group title="新地址">
+<textarea class="new-summary" name="address"></textarea>
+</van-cell-group>
+<button  plain="true" type="primary" class="btn" form-type="submit">提交修改</button>
+</form>
+</view>

@@ -2,13 +2,13 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
  
 <view style='margin-top: {{height}}px'>
-  <van-row gutter="10" bindtap='my_information'>
+  <van-row gutter="10" >
     <van-col span="6"> 
       <image src = "{{my_img}}" class='my-avatar' mode='cover'></image>
     </van-col>
     <van-col span="10">
       <van-row><view class="my-nickname">{{nickName}}</view></van-row>
-      <view class="format" wx:if="{{rank==1}}" style="color:#8a8a8a;">
+      <view class="format" wx:if="{{rank==1}}" style="color:#8a8a8a;" bindtap='my_information'>
         <van-row><van-col span="3">
           <view class="my_diamond"><van-icon name="diamond"/></view>
         </van-col>
@@ -16,7 +16,7 @@
           <view class="my_rank">信用极差 Lv.1</view>
         </van-col></van-row>
       </view>
-      <view class="format" wx:if="{{rank==2}}" style="color:#7cba59;">
+      <view class="format" wx:if="{{rank==2}}" style="color:#7cba59;" bindtap='my_information'>
         <van-row><van-col span="3">
           <view class="my_diamond"><van-icon name="diamond"/></view>
         </van-col>
@@ -24,7 +24,7 @@
           <view class="my_rank">信用较差 Lv.2</view>
         </van-col></van-row>
       </view>
-      <view class="format" wx:if="{{rank==3}}" style="color:#3f81c1;">
+      <view class="format" wx:if="{{rank==3}}" style="color:#3f81c1;" bindtap='my_information'>
         <van-row><van-col span="3">
           <view class="my_diamond"><van-icon name="diamond"/></view>
         </van-col>
@@ -32,7 +32,7 @@
           <view class="my_rank">信用一般 Lv.3</view>
         </van-col></van-row>
       </view>
-      <view class="format" wx:if="{{rank==4}}" style="color:#82529d;">
+      <view class="format" wx:if="{{rank==4}}" style="color:#82529d;" bindtap='my_information'>
         <van-row><van-col span="3">
           <view class="my_diamond"><van-icon name="diamond"/></view>
         </van-col>
@@ -40,7 +40,7 @@
           <view class="my_rank">信用较好 Lv.4</view>
         </van-col></van-row>
       </view>
-      <view class="format" wx:if="{{rank==5}}" style="color:#e2ab53;">
+      <view class="format" wx:if="{{rank==5}}" style="color:#e2ab53;" bindtap='my_information'>
         <van-row><van-col span="3">
           <view class="my_diamond"><van-icon name="diamond"/></view>
         </van-col>
@@ -50,7 +50,7 @@
       </view>
     </van-col>
     <van-col span="8">
-      <view class="my_information"><van-icon name="arrow" /></view>
+      <view class="my_information" bindtap="navigateChange"><van-icon name="arrow" /></view>
     </van-col>
   </van-row>
 

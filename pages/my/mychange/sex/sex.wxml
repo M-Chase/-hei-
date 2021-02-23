@@ -1,0 +1,11 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view style='margin-top: {{height}}px' >
+<form bindsubmit="changeSex">
+<radio-group class="container" name="sex">
+<radio value="男" class="sexbox" checked="{{isBoy}}">男</radio>
+<radio value="女" class="sexbox" checked="{{!isBoy}}">女</radio>
+</radio-group>
+<button  plain="true" type="primary" form-type="submit" class="btn">提交更改</button>
+</form>
+</view>
+

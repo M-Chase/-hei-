@@ -1,0 +1,11 @@
+/* pages/my/mychange/sex/sex.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0rpx;
+}
+.sexbox{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
