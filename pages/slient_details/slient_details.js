@@ -124,7 +124,7 @@ Page({
    */
   onReady: function () {
 
-  },
+  }, 
 
   /**
    * 生命周期函数--监听页面显示
@@ -146,7 +146,7 @@ Page({
       var count = 0
       var data = res.data
       var lunbo = []
-        for(var i=0;i<data.length,count<5;i++){
+        for(var i=data.length-1;i>=0,count<5;i--){
           if(data[i].pic){
             lunbo.push(data[i])
             console.log(lunbo)

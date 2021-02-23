@@ -11,7 +11,7 @@
 
 
   <!--获取权限-->
-  <view wx:if="{{!canIUse}}">
+  <view wx:if="{{!canIUse}}"> 
     <view  style="position: absolute;top: 15%;left: 50%;transform: translate(-50%,-50%);"><image src="../image/logo.png" style="height:50px;width:50px;"></image></view>
     <view  style="position: absolute;top: 22%;left: 50%;transform: translate(-50%,-50%);font-size:16px;">申请获取您的公开信息</view>
     <view  style="position: absolute;top: 25%;left: 50%;transform: translate(-50%,-50%);font-size:16px;">（包括头像，昵称等）</view>
@@ -26,18 +26,13 @@
     <view style="width:100%;height:auto;background-color:black;position:fixed;top:{{height}}px;z-index: 2;" bindtouchstart="touchStart" bindtouchend="touchEnd">
       <!--图片广告-->
       <view wx:if="{{imgSrc1}}">
-        <view style="height:420rpx;position:relative;">
+        <view style="height:{{(205-tmp)*2}}rpx;position:relative;">
         <!--搜索框-->
         <van-search value="{{keyword}}" shape="round" background="rgba(255,255,255,1)" placeholder="请输入关键字" use-action-slot bind:change="keyword" class="search">
           <view slot="action"  bindtap = 'onSearch' style="padding-left:10px;padding-right:10px;background-color:black;border-radius: 15%;color:white;font-size:14px;">搜索</view>   
         </van-search>
-        <view bindtap="slient_details" class="pic" >
-          <!--
-          <image style="width:100%;height:74%;position:absolute;top:114rpx" src = "{{imgSrc1}}" mode='scaleToFill' >
-            <text>tejujeyjedjgjjhgj</text>
-          </image>     
-          -->
-          <view style="margin-top:26%;width:80%;">
+        <view bindtap="slient_details" class="pic">
+          <view wx:if="{{!tmp}}" style="margin-top:26%;width:80%;">
             <view class="text_set">1、{{title1}}</view>
             <view class="text_set">2、{{title2}}</view>
             <view style="color:rgb(221, 214, 214);height:1px;border:0px solid white;line-height:1px;">......</view>

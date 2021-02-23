@@ -77,8 +77,13 @@ App({
         // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
         // 所以此处加入 callback 以防止这种情况
         if (this.userInfoReadyCallback) {
+          console.log('回调函数')
           this.userInfoReadyCallback(res)
         }
+      },
+      fail: res => {
+        console.log(res,"接口调用失败")
+        this.userInfoReadyCallback(res)
       }
     })
 

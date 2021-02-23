@@ -8,7 +8,10 @@ Page({
   data: {
     treat_server: "none",
     publish_info:[],//所有的发布信息
-    canIUse: false,//判断用户是否授权
+    //canIUse: false,//判断用户是否授权
+    canIUse: true,//判断用户是否授权
+    hasInfo: wx.canIUse('button.open-type.getUserInfo'),
+    userInfo: '',
     publish_info_my:0,//发布，消息，我的，分别对应0，1，2
     keyword:'',
     info_unreadnum:"",
@@ -60,50 +63,37 @@ Page({
     //  ]
       history_info: [],
       title1: '',
-      title2: ''
-   
+      title2: '',
+      scrollTop: 0,
+      lastone: 0
   },
   onChange(event) {
     this.setData({ active: event.detail });
   },
-/*
+  
   onPageScroll (e) { 
-    console.log(e.scrollTop)
     let scrolltop = e.scrollTop;
-    let tmp = this.data.tmp
-    if(scrolltop>=tmp){
+    if(scrolltop<160){
       this.setData({
-        tmp : scrolltop,
-        img_height: this.data.img_height-(scrolltop-tmp)/10
-      })
-    }else{ 
-      this.setData({ 
-        tmp : scrolltop,
-        img_height: this.data.img_height+(scrolltop-tmp)/10
-      })
+        tmp : scrolltop
+      }) 
+    }else{
+      this.setData({
+        tmp : 151.2
+      }) 
     }
   },
-*/
-/*
-  touchStart(e){
-    console.log('滚起来', e);
-    this.setData({
-      img_height: img_height-30
-    })
-  },
-  touchEnd(e){
-    console.log('停下来', e);
-    this.setData({
-      img_height: img_height
-    })
-  },
-*/
+  
 slient_details:function(){
+  var timestamp = Date.parse(new Date());
+      timestamp = parseInt(timestamp / 1000);
   var data = {
-    openid: app.globalData.openid
+    openid: app.globalData.openid,
+    timestamp: timestamp,
+    category: '历史上的今天'
   }
   console.log(data)
- // var that = this
+  // var that = this
   request.request('https://www.yunluheishi.cn:443/wx_Code/updateFestivalClicks', 'GET', data).then(function (res) {
     console.log("bbbbbbbbbbbbbbbbbbb")
     console.log(res)
@@ -143,6 +133,8 @@ slient_details:function(){
       }
         this.setData({
           canIUse: true,
+        //  canIUse: false,
+          userInfo: app.globalData.userInfo,
           info_unreadnum: 1
           
       })  
@@ -216,23 +208,44 @@ slient_details:function(){
     wx.navigateBack({
       delta: -1
     })
+    console.log(app.globalData.userInfo)
+
 
     //判断用户是否已授权
-    if (app.globalData.userInfo!='') {
+    if (app.globalData.userInfo != '') {
+      console.log('怎么回事')
       that.setData({
-        canIUse: true
+        canIUse: true,
+        userInfo: app.globalData.userInfo
+       // canIUse: false
       })
-    }
+    }  
     else {
+      console.log('延迟')
       app.userInfoReadyCallback = res => {
-        that.setData({
-          canIUse: true
-        })
+        console.log(res.userInfo,'发生什么了') 
+        if(res.userInfo){
+          console.log('成功') 
+          that.setData({
+            canIUse: true, 
+            userInfo: app.globalData.userInfo
+           // canIUse: false
+          })
+        }else{
+          console.log('失败') 
+          that.setData({
+            canIUse: false
+          })
+        }
+        
       }
+
     }
-
-
-
+    setTimeout(()=>{
+      console.log('定时器')
+      
+    },1000)
+    
     //设置滚动值
     that.get_titletext()
 
@@ -371,8 +384,10 @@ slient_details:function(){
       })
     }
     else {
-      this.setData({canIUse:false})
-
+      this.setData({
+       // canIUse:false
+       canIUse: true
+      })
     }
   },
   all_sell_buy:function(e)
