@@ -25,6 +25,11 @@ Page({
     // 此页面 页面内容距最顶部的距离
     height: app.globalData.height * 2 + 20 
   },
+	navigateChange:function(){
+		wx.navigateTo({
+			url: 'mychange/mychange',
+		})
+	},
   onChange(event) {
     this.setData({ active: event.detail });
   },

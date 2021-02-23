@@ -1,0 +1,4 @@
+/* pages/my/mychange/address/address.wxss */
+.new-address{
+  color: #666
+}

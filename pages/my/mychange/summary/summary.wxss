@@ -1,0 +1,4 @@
+/* pages/my/mychange/summary/summary.wxss */
+.new-summary{
+  color: #666
+}

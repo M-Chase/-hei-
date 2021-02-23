@@ -1,0 +1,14 @@
+.title{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.text-right{
+	float: right 
+}
+.avatar{
+  width: 65rpx;
+  height: 65rpx;
+  float: right ;
+  border-radius: 50%
+}
