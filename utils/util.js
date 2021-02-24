@@ -64,13 +64,27 @@ function is_valid(data,content)
   }
 }
 
+function throttle(fn, delay) {
+  let previous = 0;
+  // 使用闭包返回一个函数并且用到闭包函数外面的变量previous
+  return function() {
+      console.log('有用')
+      let _this = this;
+      let args = arguments;
+      let now = new Date();
+      if(now - previous > delay) {
+          fn.apply(_this, args);
+          previous = now;
+      }
+  }
+}
 
 module.exports = {
   span_time: span_time,
   formatDate: formatDate,
   time_now_publish: time_now_publish,
   is_valid: is_valid,
-
+  throttle: throttle
 }
 
 
