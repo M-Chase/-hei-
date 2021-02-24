@@ -12,23 +12,49 @@ Page({
       title: '头像信息', //导航栏 中间的标题
     },
     height: app.globalData.height * 2 + 20,
+    newAvatar:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(app.globalData.userInfo)
   },
   changAvatar:function(){
+    var that=this;
     wx.chooseImage({
       count:1,
       success: function(res) {
         console.log(res)
+        that.setData({
+          newAvatar: res.tempFilePaths[0]
+        })
+        that.uploadImg(res.tempFilePaths[0])
       },
     })
   },
-  
+  uploadImg:function(avatarUrl){
+    var openid = app.globalData.userInfo.openid
+    var data = { "openId": openid, "MultiparFile": avatarUrl}
+    console.log(avatarUrl)
+    wx.uploadFile({
+      url: 'https://www.yunluheishi.cn:443/wx_code/changeImg',
+      header: {
+        "Content-Type": "application/json"
+      },
+      filePath: avatarUrl,
+      name: app.globalData.userInfo.nickName,
+      formData: { "openId": openid},
+      success(res){
+        console.log(res)
+      },
+      fail(res){
+        console.log(res)
+      }
+      
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

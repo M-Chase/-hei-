@@ -53,14 +53,14 @@
     <view slot="title">
       <text>收货地址</text>
       <!-- <view class="van-cell-history">收货地址</view> -->
-      <!-- <text wx:if="{{userInfo.goods_address!=null}}">{{userInfo.goods_address}}</text> -->
+      <text wx:if="{{userInfo.goods_address!=null}}" class="text-right">{{address}}</text>
     </view>
   </van-cell>
   <van-cell bindtap='navtoInfo' is-link>
     <view slot="title">
       <text>个人简介</text>
       <!-- <view class="van-cell-history">个人简介</view> -->
-      <!-- <text wx:if="{{userInfo.introduction!=null}}">{{userInfo.introduction}}</text> -->
+      <text wx:if="{{userInfo.introduction!=null}}" class="text-right">{{introduction}}</text>
     </view>
   </van-cell>
 </view>

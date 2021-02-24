@@ -12,7 +12,9 @@ Page({
 			title: '个人信息', //导航栏 中间的标题
 		},
 		height: app.globalData.height * 2 + 20,
-		userInfo:{}
+		userInfo:{},
+    address:"",
+    introduction:""
 	},
 	
 
@@ -30,6 +32,12 @@ Page({
 		  console.log(res.userInfo)
       that.setData({
         userInfo:res.userInfo
+      })
+      var address = res.userInfo.goods_address.substring(0,8)+"..."
+      var introduction = res.userInfo.introduction.substring(0,8)+"..."
+      that.setData({
+        address:address,
+        introduction:introduction
       })
 		  // console.log(that.data.userInfo)
 		})
