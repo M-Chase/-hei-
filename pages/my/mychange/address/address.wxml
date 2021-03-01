@@ -1,7 +1,7 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view style='margin-top: {{height}}px'>
 <van-cell-group title="原来地址">
-<van-cell label="{{address}}"><text></text></van-cell>
+<van-cell><text class="blackContext">{{address}}</text></van-cell>
 </van-cell-group>
 <form bindsubmit="submit">
 <van-cell-group title="新地址">

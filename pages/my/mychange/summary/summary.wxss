@@ -2,3 +2,8 @@
 .new-summary{
   color: #666
 }
+.blackContext{
+  color: #333;
+  float: left;
+  
+}

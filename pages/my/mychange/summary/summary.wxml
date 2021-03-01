@@ -1,7 +1,7 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view style='margin-top: {{height}}px'>
 <van-cell-group title="原来简介">
-<van-cell label="{{introduction}}"><text></text></van-cell>
+<van-cell  ><text class="blackContext">{{introduction}}</text></van-cell>
 </van-cell-group>
 <form bindsubmit="submit">
 <van-cell-group title="新简介">
