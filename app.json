@@ -29,7 +29,10 @@
     "pages/slient_details/slient_details",
     "pages/publish_category/publish_category",
     "pages/upload_server/upload_server",
-    "pages/history_detail/history_detail"
+    "pages/history_detail/history_detail",
+    "pages/compus/compus",
+    "pages/compus/compusDetail/compusDetail",
+    "pages/uploadCompus/uploadCompus"
   ],
   "window": {
     "backgroundTextStyle": "light",

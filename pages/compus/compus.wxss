@@ -1,0 +1,8 @@
+/* pages/compus/compus.wxss */
+.add_icon{
+  position: fixed;
+  width: 100rpx;
+  height: 100rpx;
+  bottom: 130rpx;
+  right: 50rpx;
+}

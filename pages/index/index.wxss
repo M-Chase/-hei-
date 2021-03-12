@@ -5,7 +5,13 @@
   border: 0rpx solid red;
   font-size: 60rpx;
 }
-
+.add_icon{
+  position: fixed;
+  width: 100rpx;
+  height: 100rpx;
+  bottom: 130rpx;
+  right: 50rpx;
+}
 .navigator-hover{
   color:red;
 }

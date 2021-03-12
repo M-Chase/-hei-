@@ -12,7 +12,7 @@ Page({
     canIUse: true,//判断用户是否授权
     hasInfo: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: '',
-    publish_info_my:0,//发布，消息，我的，分别对应0，1，2
+    publish_info_my:0,//二手交易，校园生活，消息，我的，分别对应0，1，2，3
     keyword:'',
     info_unreadnum:"",
     scrollHeight:0,
@@ -103,22 +103,36 @@ slient_details:function(){
           url: '../slient_details/slient_details'
    })
 },
+  uploadInfo:function(){
+    wx.navigateTo({
+      url: '../upload/upload',
+    })
+  },
   //点击发布/求购执行的函数
   publish_purchase:function(event) {
     if(event.detail=='0')
     {
-      this.to_otherpage('../upload/upload')
+      var pages=getCurrentPages()
+      console.log(pages[0].route)
+      if (pages[0].route !="pages/index/index"){
+        this.to_otherpage('../index/index')
+      }
+      
     //  this.to_otherpage('../upload_server/upload_server')
     //this.to_otherpage('../publish_category/publish_category')
 
     }
     else if(event.detail=='1')
     {
+      this.to_otherpage('../compus/compus')
+
+    }
+    else if(event.detail=='2')
+    {
       this.to_otherpage('../my_info/my_info')
 
     }
-    else
-    {
+    else {
       this.to_otherpage('../my/my')
 
     }

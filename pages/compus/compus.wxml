@@ -1,0 +1,6 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view style='margin-top: {{height}}px'>
+</view>
+<view bindtap="uploadInfo">
+ <image src="../image/add.png" class="add_icon"></image>
+ </view>
