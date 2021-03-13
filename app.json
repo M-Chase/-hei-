@@ -41,6 +41,33 @@
     "navigationBarTextStyle": "white",
     "navigationStyle": "custom"
   },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "二手交易",
+      "iconPath": "pages/image/tabbar/market_un.png",
+      "selectedIconPath": "pages/image/tabbar/market.png"
+    },
+    {
+      "pagePath": "pages/compus/compus",
+      "text": "校园生活",
+      "iconPath": "pages/image/tabbar/school_un.png",
+      "selectedIconPath": "pages/image/tabbar/school.png"
+    },
+    {
+      "pagePath": "pages/my_info/my_info",
+      "text": "消息",
+      "iconPath": "pages/image/tabbar/message_un.png",
+      "selectedIconPath": "pages/image/tabbar/message.png"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "pages/image/tabbar/my_un.png",
+      "selectedIconPath": "pages/image/tabbar/my.png"
+    }
+    ]
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

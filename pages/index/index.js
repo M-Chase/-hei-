@@ -109,34 +109,34 @@ slient_details:function(){
     })
   },
   //点击发布/求购执行的函数
-  publish_purchase:function(event) {
-    if(event.detail=='0')
-    {
-      var pages=getCurrentPages()
-      console.log(pages[0].route)
-      if (pages[0].route !="pages/index/index"){
-        this.to_otherpage('../index/index')
-      }
+  // publish_purchase:function(event) {
+  //   if(event.detail=='0')
+  //   {
+  //     var pages=getCurrentPages()
+  //     console.log(pages[0].route)
+  //     if (pages[0].route !="pages/index/index"){
+  //       this.to_otherpage('../index/index')
+  //     }
       
-    //  this.to_otherpage('../upload_server/upload_server')
-    //this.to_otherpage('../publish_category/publish_category')
+  //   //  this.to_otherpage('../upload_server/upload_server')
+  //   //this.to_otherpage('../publish_category/publish_category')
 
-    }
-    else if(event.detail=='1')
-    {
-      this.to_otherpage('../compus/compus')
+  //   }
+  //   else if(event.detail=='1')
+  //   {
+  //     this.to_otherpage('../compus/compus')
 
-    }
-    else if(event.detail=='2')
-    {
-      this.to_otherpage('../my_info/my_info')
+  //   }
+  //   else if(event.detail=='2')
+  //   {
+  //     this.to_otherpage('../my_info/my_info')
 
-    }
-    else {
-      this.to_otherpage('../my/my')
+  //   }
+  //   else {
+  //     this.to_otherpage('../my/my')
 
-    }
-  },
+  //   }
+  // },
   //获取用户信息
   getUserInfo: function (e) {
     console.log(e)
